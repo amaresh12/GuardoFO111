@@ -1,0 +1,76 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="androidapp.com.stalwartsecurity.Fragment.AddIncidents">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:background="@color/background"
+    android:layout_height="match_parent">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/customedittext"
+        android:hint="Incident Type"
+        android:id="@+id/in_type"
+        android:paddingLeft="5dp"
+        android:singleLine="true" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/in_type"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/customedittext"
+        android:hint="Date and Time"
+        android:paddingLeft="5dp"
+        android:id="@+id/in_date"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/in_date"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/customedittext"
+        android:hint="Title"
+        android:paddingLeft="5dp"
+        android:id="@+id/in_title"
+        android:singleLine="true"
+        android:maxLength="30"
+        />
+    <EditText
+        android:inputType="textMultiLine"
+        android:lines="10"
+        android:minLines="9"
+        android:hint="Type Your Message"
+        android:gravity="top|left"
+        android:background="@drawable/customedittext"
+        android:id="@+id/msgbody"
+        android:maxLines="10"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@id/in_title"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:scrollbars="vertical"
+        />
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_selector_qa"
+        android:text="save"
+        android:layout_below="@id/msgbody"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"/>
+
+</RelativeLayout>
+
+</FrameLayout>

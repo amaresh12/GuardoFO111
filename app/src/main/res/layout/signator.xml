@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/signatoury"
+        android:gravity="center"
+        android:layout_margin="40dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please Sign here."
+            android:layout_marginLeft="20dp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"/>
+        <com.github.gcacace.signaturepad.views.SignaturePad
+            android:id="@+id/signatory"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="35dp"
+            android:background="@color/background1" />
+
+        <Button
+            android:id="@+id/clear"
+            android:background="@drawable/border3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/signatory"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:text="Clear"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/submit_signator"
+            android:background="@drawable/border3"
+            android:layout_marginTop="10dp"
+            android:text="Submit"
+            android:layout_marginRight="10dp"
+            android:layout_below="@+id/signatory"
+            android:layout_toLeftOf="@id/clear" />
+
+    </RelativeLayout>
+</LinearLayout>

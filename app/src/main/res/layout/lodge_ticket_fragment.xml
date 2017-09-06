@@ -1,0 +1,170 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/inwardFrame">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/status_layout"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status"
+            android:textStyle="bold"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="0dp"/>
+        <Spinner
+            android:id="@+id/status_id"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="0dp"
+            android:background="@drawable/customedittext"
+            android:layout_toRightOf="@+id/status"
+            android:gravity="center"/>
+    </RelativeLayout>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="70dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="30dp"
+            android:background="@drawable/customedittext">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/unitname"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="UnitName"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="30dp"
+                android:textStyle="bold"
+                android:layout_toRightOf="@+id/unitname"
+                android:hint="Unity Name"
+                android:id="@+id/et_unit_name"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Department"
+                android:layout_marginStart="20dp"
+                android:layout_below="@+id/et_unit_name"
+                android:id="@+id/department"/>
+            <Spinner
+                android:id="@+id/spin_department"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:background="@drawable/customedittext"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="0dp"
+                android:layout_below="@+id/et_unit_name"
+                android:layout_toRightOf="@+id/department"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="7dp"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="43dp"
+                android:text="TicketType"
+                android:layout_marginStart="20dp"
+                android:layout_below="@+id/department"
+                android:id="@+id/ticket"/>
+            <Spinner
+                android:id="@+id/spin_ticket"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:background="@drawable/customedittext"
+                android:layout_below="@+id/spin_department"
+                android:layout_toRightOf="@+id/ticket"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="10dp">
+
+
+            </Spinner>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/comment"
+                android:text="Comments"
+                android:layout_marginTop="60dp"
+                android:layout_marginLeft="20dp"
+                android:layout_below="@+id/ticket"/>
+            <EditText
+                android:id="@+id/etr_comment"
+                android:layout_below="@+id/spin_ticket"
+                android:layout_width="150dp"
+                android:layout_marginTop="30dp"
+                android:gravity="top"
+                android:paddingLeft="2dp"
+                android:maxLength="200"
+                android:layout_toRightOf="@+id/comment"
+                android:layout_marginLeft="15dp"
+                android:layout_height="50dp"
+                android:inputType="textMultiLine"
+                android:background="@drawable/customedittext"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="Assigned to"
+                android:layout_marginStart="20dp"
+                android:layout_below="@+id/comment"
+                android:id="@+id/assigned_to"/>
+            <Spinner
+                android:id="@+id/spin_assignto"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/etr_comment"
+                android:layout_toRightOf="@+id/assigned_to"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="7dp"
+                android:background="@drawable/customedittext">
+
+            </Spinner>
+
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="60dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:id="@+id/bt_submit"
+                android:layout_centerInParent="true"
+                android:layout_below="@+id/spin_assignto"
+                android:background="@color/deep_blue"
+                android:text="Submit"/>
+
+        </RelativeLayout>
+    </ScrollView>
+</FrameLayout>

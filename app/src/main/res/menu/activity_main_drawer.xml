@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Home" />
+
+    </group>
+
+    <item android:title="Visitors">
+        <menu>
+            <item
+                android:id="@+id/add_visitors"
+                android:icon="@drawable/ic_person_add_black_24dp"
+                android:title="Entry " />
+            <item
+                android:id="@+id/exit_visitors"
+                android:icon="@drawable/ic_exit_to_app_black_24dp"
+                android:title="Exit " />
+            <item
+                android:id="@+id/exitD_visitors"
+                android:icon="@drawable/ic_exit_to_app_black_24dp"
+                android:title="Date wise Exit " />
+        </menu>
+    </item>
+    <item android:title="Staffs / Service Providers">
+        <menu>
+            <item
+                android:id="@+id/entry_mades"
+                android:icon="@drawable/ic_person_add_black_24dp"
+                android:title="Entry " />
+            <item
+                android:id="@+id/exit_mades"
+                android:icon="@drawable/ic_exit_to_app_black_24dp"
+                android:title="Exit " />
+        </menu>
+    </item>
+    <item android:title="Material Movement">
+        <menu>
+            <item
+                android:id="@+id/inward"
+                android:icon="@mipmap/ic_swap_horiz_black_24dp"
+                android:title="Inwards " />
+            <item
+                android:id="@+id/ourwards"
+                android:icon="@mipmap/ic_swap_horiz_black_24dp"
+                android:title="Outward " />
+        </menu>
+    </item>
+    <item android:title="Profile">
+        <menu>
+          <!--  <item
+                android:id="@+id/settings"
+                android:icon="@drawable/ic_settings_black_24dp"
+                android:title="Settings " />-->
+            <item
+                android:id="@+id/signout"
+                android:icon="@drawable/ic_power_settings_new_black_24dp"
+                android:title="Logout" />
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,36 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context="androidapp.com.stalwartsecurity.Fragment.Visitorsexit">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="No visitors found"
+        android:id="@+id/no_viritorsmain" />
+    <SearchView
+        android:id="@+id/visitorsSearch"
+        android:layout_width="wrap_content"
+        android:background="@color/background"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_alignParentTop="true"/>
+<android.support.v4.widget.SwipeRefreshLayout
+    android:layout_width="match_parent"
+    android:id="@+id/visiorslist_rel"
+    android:layout_marginTop="40dp"
+    android:layout_height="match_parent">
+    <!-- TODO: Update blank fragment layout -->
+<ListView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:id="@+id/visitorsList">
+
+</ListView>
+
+</android.support.v4.widget.SwipeRefreshLayout>
+
+</FrameLayout>

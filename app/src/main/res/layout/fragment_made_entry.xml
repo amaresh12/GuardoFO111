@@ -1,0 +1,225 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="androidapp.com.stalwartsecurity.Fragment.MadeEntry">
+
+    <!-- TODO: Update blank fragment layout -->
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:id="@+id/staffFrame"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <Spinner
+                android:id="@+id/sp_input"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/customedittext"></Spinner>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:text="Input ID Number"
+                android:visibility="gone"
+                android:id="@+id/idnumberheading"
+                android:layout_marginTop="15dp"
+                android:layout_height="wrap_content"
+                />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/customedittext"
+                android:hint="ID Number"
+                android:paddingLeft="5dp"
+                android:singleLine="true"
+                android:visibility="gone"
+                android:id="@+id/et_slnumber"/>
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@drawable/button_selector_qa"
+                android:layout_margin="15dp"
+                android:id="@+id/bt_idsubmit"
+                android:visibility="gone"
+                android:layout_gravity="center_horizontal"
+                android:text="submit"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_margin="10dp"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:background="@color/colorPrimary"></LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:id="@+id/staff_details"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp">
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/sprofile_image"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/cameraicon"
+                    app:civ_border_color="@color/colorPrimary"
+                    app:civ_border_width="2dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Staff Type"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/staffTypeheading"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:hint="Staff Type"
+                    android:id="@+id/stafftype"
+                    android:paddingLeft="5dp"
+                    android:editable="false"
+                    android:focusable="false"
+                    android:background="@drawable/customedittext"
+                    ></EditText>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Name"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/staffNameheading"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/customedittext"
+                    android:hint="Name"
+                    android:editable="false"
+                    android:paddingLeft="5dp"
+                    android:singleLine="true"
+                    android:id="@+id/et_sname"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Phone"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/staffPhoneheading"/>
+
+
+                <EditText
+                    android:id="@+id/et_sphone"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/customedittext"
+                    android:hint="Phone"
+                    android:editable="false"
+                    android:paddingLeft="5dp"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Coming From"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/staffcmngfromheading"/>
+
+                <EditText
+                    android:id="@+id/et_sfrm"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/customedittext"
+                    android:hint="From"
+                    android:editable="false"
+                    android:paddingLeft="5dp"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Flat Number"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/staffflatheading"/>
+
+                <EditText
+                    android:id="@+id/et_sappt"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/customedittext"
+                    android:hint="Appt. Number"
+                    android:editable="false"
+                    android:paddingLeft="5dp"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vehicle Number"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/staffvcleheading"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/customedittext"
+                    android:hint="Vehicle Number"
+                    android:editable="false"
+                    android:paddingLeft="5dp"
+                    android:id="@+id/et_svcle"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date and Time"
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/staffDTheading"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/customedittext"
+                    android:hint="Date Time"
+                    android:editable="false"
+                    android:id="@+id/et_sdtntime"
+                    android:paddingLeft="5dp"
+                    android:singleLine="true" />
+
+                <Button
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/bt_staffentry"
+                    android:background="@drawable/button_selector_qa"
+                    android:text="Entry" />
+            </LinearLayout>
+
+            </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>
+
+</FrameLayout>

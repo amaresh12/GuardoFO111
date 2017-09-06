@@ -1,0 +1,192 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="androidapp.com.stalwartsecurity.Fragment.VisitorsEntry">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/v_frame"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="vertical">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/profile_image"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/cameraicon"
+                    app:civ_border_color="@color/colorPrimary"
+                    app:civ_border_width="2dp" />
+
+                <Spinner
+                    android:id="@+id/sp_visitors"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/customedittext"></Spinner>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:textSize="12dp"
+                    android:visibility="gone"
+                    android:id="@+id/passheading"
+                    android:layout_marginTop="15dp"
+                    android:text="Pass Number"/>
+
+                <EditText
+                    android:id="@+id/et_pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:visibility="gone"
+                    android:background="@drawable/customedittext"
+                    android:hint="Pass Code"
+                    android:paddingLeft="5dp"
+                    android:singleLine="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:textSize="12dp"
+                    android:id="@+id/phone_heading"
+                    android:layout_marginTop="15dp"
+                    />
+
+                <AutoCompleteTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/customedittext"
+                    android:hint="Phone"
+                    android:paddingLeft="5dp"
+                    android:singleLine="true"
+                    android:inputType="phone"
+                    android:maxLength="10"
+                    android:id="@+id/et_phone"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:textSize="12dp"
+                    android:id="@+id/nameheading"
+                    android:layout_marginTop="15dp"
+                   />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/customedittext"
+                    android:hint="Name"
+                    android:paddingLeft="5dp"
+                    android:singleLine="true"
+                    android:id="@+id/et_name"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:textSize="12dp"
+                    android:id="@+id/apptnoheading"
+                    android:layout_marginTop="15dp"
+                  />
+
+                <EditText
+                    android:id="@+id/et_appt"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:focusable="false"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/customedittext"
+                    android:hint="Number"
+                    android:editable="false"
+                    android:paddingLeft="5dp"
+                    android:singleLine="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:textSize="12dp"
+                    android:id="@+id/cmngheading"
+                    android:layout_marginTop="15dp"
+                  />
+
+                <EditText
+                    android:id="@+id/et_frm"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/customedittext"
+                    android:hint="From"
+                    android:paddingLeft="5dp"
+                    android:singleLine="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:textSize="12dp"
+                    android:text="Enter vehicle number"
+                    android:id="@+id/vclheading"
+                    android:layout_marginTop="15dp"
+                   />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/customedittext"
+                    android:hint="Number"
+                    android:paddingLeft="5dp"
+                    android:id="@+id/et_vcle"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:textSize="12dp"
+                    android:id="@+id/dateheading"
+                    android:layout_marginTop="15dp"
+                    android:text="Date and time"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/customedittext"
+                    android:hint="Time"
+                    android:editable="false"
+                    android:id="@+id/et_dtntime"
+                    android:paddingLeft="5dp"
+                    android:singleLine="true" />
+
+                <Button
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/submit"
+                    android:background="@drawable/button_selector_qa"
+                    android:text="Entry" />
+
+                </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+</FrameLayout>

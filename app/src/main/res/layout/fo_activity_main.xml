@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_colorPrimary">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/customback"
+        android:id="@+id/relative_fodetail">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:background="@mipmap/ic_launcher_round"
+            android:layout_marginTop="20dp"/>
+        <TextView
+            android:id="@+id/fo_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username"
+            android:textColor="@color/white_color"
+            android:layout_below="@+id/img"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold|italic"/>
+        <TextView
+            android:id="@+id/fo_number"
+            android:layout_below="@+id/fo_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9090909090"
+            android:textColor="@color/white_color"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="50dp"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="0dp"
+        android:layout_below="@+id/relative_fodetail"
+        >
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:id="@+id/relative_design"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/light_colorPrimary">
+
+        <RelativeLayout
+            android:id="@+id/fo_checkin"
+            android:layout_width="170dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/border">
+            <ImageView
+                android:id="@+id/unit_img1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:backgroundTint="@color/green"
+                android:layout_centerInParent="true"
+                android:background="@mipmap/ic_check_black_24dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CHECK IN"
+                android:textColor="@color/black"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/unit_img1"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/fo_incident"
+            android:layout_toRightOf="@+id/fo_checkin"
+            android:layout_width="170dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/border">
+            <ImageView
+                android:id="@+id/incident_img1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:backgroundTint="@color/red"
+                android:layout_centerInParent="true"
+                android:background="@mipmap/ic_security_black_24dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="INCIDENT"
+                android:textColor="@color/black"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/incident_img1"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/relative_design"
+        android:background="@android:color/transparent">
+
+        <RelativeLayout
+            android:id="@+id/fo_ticket"
+            android:layout_below="@+id/fo_checkin"
+            android:layout_width="170dp"
+            android:layout_height="150dp"
+            android:background="@drawable/border">
+            <ImageView
+                android:id="@+id/tickt_img1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:backgroundTint="@color/pink"
+                android:background="@mipmap/ic_aspect_ratio_black_24dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TICKET"
+                android:textColor="@color/black"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/tickt_img1"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/fo_attendance"
+            android:layout_toRightOf="@+id/fo_ticket"
+            android:layout_below="@+id/fo_incident"
+            android:layout_width="170dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/border">
+            <ImageView
+                android:id="@+id/attendance_img1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:backgroundTint="@color/orange"
+                android:background="@drawable/ic_note_add_black_24dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="ATTENDANCE"
+                android:textColor="@color/black"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/attendance_img1"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"/>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

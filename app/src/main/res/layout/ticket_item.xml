@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp">
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/status_tyoe"
+            android:text="Open"
+            android:textStyle="bold"
+            android:textColor="@color/green"
+            android:layout_marginTop="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TicketNumber"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="140dp"
+            android:id="@+id/ticket_number"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/unit_nm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+           android:layout_marginTop="0dp"
+            android:layout_marginStart="5dp"
+            android:text="UnitName: "
+            android:layout_below="@+id/ticket_number"/>
+        <TextView
+            android:id="@+id/edit_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Harmony"
+            android:layout_marginTop="0dp"
+            android:layout_below="@+id/ticket_number"
+            android:layout_marginStart="10dp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@+id/unit_nm"
+            android:layout_marginLeft="10dp"
+            />
+
+        <TextView
+            android:id="@+id/txt_assign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Assigned To: "
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/unit_nm"
+            android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:id="@+id/edit_assign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stalwart"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/txt_assign"
+            android:layout_below="@+id/edit_unit"
+            android:layout_marginLeft="10dp"
+            />
+
+        <!--<TextView
+            android:id="@+id/reported"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TicketType: "
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/department"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:id="@+id/reported_by"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Material"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
+            android:layout_toRightOf="@+id/datetime"
+            android:layout_below="@+id/edit_department"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"/>-->
+
+        <TextView
+            android:id="@+id/datetime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DateTime: "
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/txt_assign"
+            android:layout_marginLeft="5dp"/>
+        <TextView
+            android:id="@+id/edit_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DATE"
+            android:textStyle="bold"
+            android:layout_toRightOf="@+id/datetime"
+            android:layout_below="@+id/edit_assign"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"/>
+
+
+
+
+
+    </RelativeLayout>
+</RelativeLayout>

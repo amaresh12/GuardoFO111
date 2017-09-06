@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please Tell us what are the issues."
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/txt_reason"/>
+
+        <EditText
+            android:id="@+id/ofcr_reason"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border3"
+            android:gravity="top|left"
+            android:hint="Type Your Message"
+            android:inputType="textMultiLine"
+            android:lines="10"
+            android:layout_margin="20dp"
+            android:maxLines="10"
+            android:minLines="9"
+            android:padding="5dp"
+            android:scrollbars="vertical"
+            android:layout_below="@+id/txt_reason"/>
+
+
+        <Button
+            android:id="@+id/ofcr_reason_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:layout_below="@+id/ofcr_reason"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/border3"
+            />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

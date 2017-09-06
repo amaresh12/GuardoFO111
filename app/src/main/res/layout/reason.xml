@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please Tell us What are the Isuues"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="20dp"
+            android:id="@+id/txt_reason"/>
+        <EditText
+            android:id="@+id/et_reason"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="2dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:background="@drawable/border3"
+            android:layout_below="@+id/txt_reason"/>
+
+        <Button
+            android:id="@+id/reason_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Next"
+            android:layout_below="@+id/et_reason"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/border3"
+            />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

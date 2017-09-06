@@ -1,0 +1,243 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/outwardframe"
+    tools:context="androidapp.com.stalwartsecurity.Fragment.Outward">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/gatepassheading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Gate Pass Number" />
+
+            <EditText
+                android:id="@+id/et_gatepass"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"
+                android:hint="GatePass Number"
+                android:paddingLeft="5dp"
+                android:singleLine="true" />
+
+            <TextView
+                android:id="@+id/descriptionheading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Description" />
+
+            <EditText
+                android:id="@+id/et_desc"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"
+                android:hint="Description"
+                android:paddingLeft="5dp"
+                android:singleLine="true" />
+
+            <TextView
+                android:id="@+id/quantityheading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Quantity" />
+
+            <EditText
+                android:id="@+id/et_qnty"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"
+                android:hint="Quantity"
+                android:paddingLeft="5dp"
+                android:singleLine="true" />
+
+            <TextView
+                android:id="@+id/selType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Type" />
+
+            <Spinner
+                android:id="@+id/sp_type"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"></Spinner>
+
+            <TextView
+                android:id="@+id/seldate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:visibility="gone"
+                android:text="Return Date" />
+            <EditText
+                android:id="@+id/out_date"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"
+                android:hint="Date"
+                android:focusable="false"
+                android:editable="false"
+                android:paddingLeft="5dp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/goingheading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Going to" />
+
+            <EditText
+                android:id="@+id/et_goingto"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"
+                android:hint="Going to"
+                android:paddingLeft="5dp"
+                android:singleLine="true" />
+
+            <TextView
+                android:id="@+id/takenbyheading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Taken By" />
+
+            <EditText
+                android:id="@+id/et_taken_name"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"
+                android:hint="Name"
+                android:paddingLeft="5dp"
+                android:singleLine="true" />
+
+            <EditText
+                android:id="@+id/et_taken_phone"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"
+                android:hint="Phone"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:paddingLeft="5dp"
+                android:singleLine="true" />
+
+            <TextView
+                android:id="@+id/vehcleheading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Enter Vehicle number" />
+
+            <EditText
+                android:id="@+id/et_vclenum"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/customedittext"
+                android:hint="Vehicle Number"
+                android:paddingLeft="5dp"
+                android:singleLine="true" />
+
+            <TextView
+                android:id="@+id/authheading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Auth. By" />
+
+            <EditText
+                android:id="@+id/et_authby"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"
+                android:hint="Authorised By"
+                android:paddingLeft="5dp"
+                android:singleLine="true" />
+
+            <TextView
+                android:id="@+id/chkheading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Checked By" />
+
+            <EditText
+                android:id="@+id/et_chkby"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"
+                android:hint="Checked By"
+                android:paddingLeft="5dp"
+                android:singleLine="true" />
+
+            <TextView
+            android:id="@+id/cmntsheading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Comments" />
+
+            <EditText
+                android:id="@+id/et_coments"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"
+                android:hint="Comments"
+                android:paddingLeft="5dp"
+                android:singleLine="true" />
+            <TextView
+                android:id="@+id/curdateheading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Date" />
+
+            <EditText
+                android:id="@+id/et_currdate"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"
+                android:hint="Date and Time"
+                android:paddingLeft="5dp"
+                android:singleLine="true" />
+
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:id="@+id/but_suboutward"
+                android:background="@drawable/button_selector_qa"
+                android:text="Submit" />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

@@ -1,0 +1,241 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/inwardFrame"
+    tools:context="androidapp.com.stalwartsecurity.Fragment.Inward">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Invoice Number"
+                android:id="@+id/in_voice"/>
+            <EditText
+                android:id="@+id/et_inno"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"
+                android:hint="Invoice No."
+                android:paddingLeft="5dp"
+                android:singleLine="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Description"
+                android:id="@+id/in_desc"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"
+                android:hint="Description"
+                android:paddingLeft="5dp"
+                android:singleLine="true"
+                android:id="@+id/et_descin"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Quantity"
+                android:id="@+id/in_quantity"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"
+                android:hint="Quantity"
+                android:paddingLeft="5dp"
+                android:singleLine="true"
+                android:id="@+id/et_qntyin"/>
+           <!-- <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Material Type"
+                android:id="@+id/in_type"/>
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"
+                android:id="@+id/sp_type"></Spinner>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:visibility="gone"
+                android:text="Expected Date"
+                android:id="@+id/in_date"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"
+                android:hint="Date"
+                android:visibility="gone"
+                android:paddingLeft="5dp"
+                android:singleLine="true"
+                android:editable="false"
+                android:id="@+id/et_date"/>-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="OrderBy"
+                android:id="@+id/in_order"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"
+                android:hint="Order by"
+                android:id="@+id/et_orderby"
+                android:paddingLeft="5dp"
+                android:singleLine="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Coming From"
+                android:id="@+id/in_cmngfrom"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"
+                android:hint="Coming From"
+                android:id="@+id/et_comingfrom"
+                android:paddingLeft="5dp"
+                android:singleLine="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Delivered By"
+                android:id="@+id/in_pname"/>
+            <EditText
+                android:id="@+id/et_pname"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"
+                android:hint="Person Name"
+                android:paddingLeft="5dp"
+                android:singleLine="true" />
+            <EditText
+                android:id="@+id/et_pmobile"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"
+                android:hint="Person's Mobile"
+                android:paddingLeft="5dp"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:singleLine="true" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Enter Vehicle Number"
+                android:id="@+id/in_cname"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"
+                android:hint="Vehicle Number"
+                android:paddingLeft="5dp"
+                android:id="@+id/et_cmpny"
+                android:singleLine="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Checked By"
+                android:id="@+id/in_chkby"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"
+                android:hint="Checked By"
+                android:id="@+id/et_chkd"
+                android:paddingLeft="5dp"
+                android:singleLine="true" />
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Authorised By"
+            android:id="@+id/in_authBy"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"
+                android:hint="Authorised  By"
+                android:id="@+id/et_authby"
+                android:paddingLeft="5dp"
+                android:singleLine="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Comments"
+                android:id="@+id/in_comments"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"
+                android:hint="Comments"
+                android:id="@+id/et_comments"
+                android:paddingLeft="5dp"
+                android:singleLine="true" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Date and Time"
+                android:id="@+id/in_date"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/customedittext"
+                android:hint="Date and  Time"
+                android:id="@+id/et_date"
+                android:paddingLeft="5dp"
+                android:singleLine="true" />
+
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:id="@+id/bt_submit"
+                android:background="@drawable/button_selector_qa"
+                android:text="Submit" />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
