@@ -35,10 +35,12 @@ import androidapp.com.stalwartsecurity.Util.CheckInternet;
 import androidapp.com.stalwartsecurity.Util.Constants;
 
 /**
- * Created by mobileapplication on 9/4/17.
+ * Created by mobileapplication on 9/7/17.
  */
 
-public class CheckinActivity1 extends AppCompatActivity {
+public class MeetingActivity extends AppCompatActivity {
+
+
     EditText alrt_cmnt,vaca_cmnt,grv_cmnt,clnt_cmnt,sum_cmnt,incdnt_cmnt;
     ImageView photo;
     Button submit;
@@ -48,16 +50,13 @@ public class CheckinActivity1 extends AppCompatActivity {
     String user_id,checkin_id;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fo_checkin1);
+        setContentView(R.layout.activity_meeting);
 
-
-
-
-        user_id =CheckinActivity1.this.getSharedPreferences(Constants.SHAREDPREFERENCE_KEY, 0).getString(Constants.N_USER_ID, null);
-        checkin_id =CheckinActivity1.this.getSharedPreferences(Constants.SHAREDPREFERENCE_KEY, 0).getString(Constants.CHECKIN_ID, null);
+        checkin_id =MeetingActivity.this.getSharedPreferences(Constants.SHAREDPREFERENCE_KEY, 0).getString(Constants.CHECKIN_ID, null);
 
 
         linn=(RelativeLayout)findViewById(R.id.linn);
@@ -87,31 +86,31 @@ public class CheckinActivity1 extends AppCompatActivity {
         alrt_rtng.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                 alrt_rating_value=String.valueOf(rating);
+                alrt_rating_value=String.valueOf(rating);
             }
         });
         vac_rtng.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                 vac_rating_value=String.valueOf(rating);
+                vac_rating_value=String.valueOf(rating);
             }
         });
         grv_rtng.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                 grv_rating_value=String.valueOf(rating);
+                grv_rating_value=String.valueOf(rating);
             }
         });
         clnt_rtng.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                 clnt_rating_value=String.valueOf(rating);
+                clnt_rating_value=String.valueOf(rating);
             }
         });
         incdnt_rtng.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                 incdnt_rating_value=String.valueOf(rating);
+                incdnt_rating_value=String.valueOf(rating);
             }
         });
 
@@ -140,46 +139,46 @@ public class CheckinActivity1 extends AppCompatActivity {
         String incdnt_rating=incdnt_rating_value;
 
 
-     if(alertcomnt.contentEquals("")){
-         showsnackbar("Give Comments");
+        if(alertcomnt.contentEquals("")){
+            showsnackbar("Give Comments");
 
-     }
-     else if(vacaCmnt.contentEquals("")){
-         showsnackbar("Give Comments");
-     }
-     else if(grvCmnt.contentEquals("")){
-         showsnackbar("Give Comments");
-     }
-     else if(vacaCmnt.contentEquals("")){
-         showsnackbar("Give Comments");
-     }
-     else if(clntCmnt.contentEquals("")){
-         showsnackbar("Give Comments");
-     }
-     else if(incdntCmnt.contentEquals("")){
-         showsnackbar("Give Comments");
-     }
-     else if(sumCmnt.contentEquals("")){
-         showsnackbar("Give Comments");
-     }
-     else if(alert_rating.contentEquals("")){
-         showsnackbar("Give Ratings");
-     }
-     else if(vac_rating.contentEquals("")){
-         showsnackbar("Give Ratings");
-     }
-     else if(grv_rating.contentEquals("")){
-         showsnackbar("Give Ratings");
-     }
-     else if(incdnt_rating.contentEquals("")){
-         showsnackbar("Give Ratings");
-     }
-     else if(client_rating.contentEquals("")){
-         showsnackbar("Give Ratings");
-     }
-     else {
-         CheckinServer();
-     }
+        }
+        else if(vacaCmnt.contentEquals("")){
+            showsnackbar("Give Comments");
+        }
+        else if(grvCmnt.contentEquals("")){
+            showsnackbar("Give Comments");
+        }
+        else if(vacaCmnt.contentEquals("")){
+            showsnackbar("Give Comments");
+        }
+        else if(clntCmnt.contentEquals("")){
+            showsnackbar("Give Comments");
+        }
+        else if(incdntCmnt.contentEquals("")){
+            showsnackbar("Give Comments");
+        }
+        else if(sumCmnt.contentEquals("")){
+            showsnackbar("Give Comments");
+        }
+        else if(alert_rating.contentEquals("")){
+            showsnackbar("Give Ratings");
+        }
+        else if(vac_rating.contentEquals("")){
+            showsnackbar("Give Ratings");
+        }
+        else if(grv_rating.contentEquals("")){
+            showsnackbar("Give Ratings");
+        }
+        else if(incdnt_rating.contentEquals("")){
+            showsnackbar("Give Ratings");
+        }
+        else if(client_rating.contentEquals("")){
+            showsnackbar("Give Ratings");
+        }
+        else {
+            CheckinServer();
+        }
 
 
 
@@ -190,8 +189,8 @@ public class CheckinActivity1 extends AppCompatActivity {
     private void CheckinServer() {
 
         if (CheckInternet.getNetworkConnectivityStatus(this)) {
-            Checkin_asyn checkin = new Checkin_asyn();
-            String checkin_type="1";
+            meeting_asyn checkin = new meeting_asyn();
+            String checkin_type="3";
             String alertcomnt=alrt_cmnt.getText().toString();
             String vacaCmnt=vaca_cmnt.getText().toString();
             String grvCmnt=grv_cmnt.getText().toString();
@@ -211,7 +210,7 @@ public class CheckinActivity1 extends AppCompatActivity {
 
     }
 
-    private class Checkin_asyn extends AsyncTask<String, Void, Void> {
+    private class meeting_asyn extends AsyncTask<String, Void, Void> {
 
         private static final String TAG = "SynchMobnum";
         private ProgressDialog progressDialog = null;
@@ -225,7 +224,7 @@ public class CheckinActivity1 extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             if (progressDialog == null) {
-                progressDialog = ProgressDialog.show(CheckinActivity1.this, "Loading", "Please wait...");
+                progressDialog = ProgressDialog.show(MeetingActivity.this, "Loading", "Please wait...");
             }
             // onPreExecuteTask();
         }
@@ -353,9 +352,9 @@ public class CheckinActivity1 extends AppCompatActivity {
 
             if (server_status == 1) {
 
-                SharedPreferences sharedPreferences = CheckinActivity1.this.getSharedPreferences(Constants.SHAREDPREFERENCE_KEY, 0); // 0 - for private mode
+                SharedPreferences sharedPreferences = MeetingActivity.this.getSharedPreferences(Constants.SHAREDPREFERENCE_KEY, 0); // 0 - for private mode
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(Constants.CHECKIN_CHECKIN_TYPE_ID, id);
+                editor.putString(Constants.MEETING_CHECKIN_TYPE_ID, id);
                 editor.commit();
 
             } else {

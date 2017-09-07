@@ -8,6 +8,7 @@ public class Constants {
     //public static  String MAINURL="http://applicationworld.net/stallwart/WebServices/";
     public static  String MAINURL="http://stalwartsecurity.in/admin/WebServices/";
     public static  String OFFLINE="http://192.168.0.2/FO/WebServices/";
+    public static  String demo_url="http://192.168.0.2/FO/Checkins/checkinType";
     public static String LOGIN="loginCheck";
     public static String CHECKIN="checkIn";
     public static String ADDVISITORS="addVisiter";
@@ -28,7 +29,12 @@ public class Constants {
     public static String N_USER_MOBILE="user_mobile";
     public static String N_USER_NAME="user_name";
     public static String N_USER_TYPE="user_type";
-    public static String CHECKIN_ID="checkin_id";
     public static String N_USER_PHOTO="user_photo";
+    public static String N_UNIT_ID="unit_id";
+    public static String CHECKIN_ID="checkin_id";
+    public static String MEETING_CHECKIN_TYPE_ID="m_checkin_type_id";
+    public static String CHECKIN_CHECKIN_TYPE_ID="c_checkin_type_id";
+    public static String TRAINING_CHECKIN_TYPE_ID="t_checkin_type_id";
+    public static String N_CHECKIN_CHECKIN_TYPE_ID="n_checkin_type_id";
     //http://applicationworld.net/stallwart/WebServices/primaryNotificationList
 }

@@ -91,6 +91,7 @@ public class CheckinActivity extends AppCompatActivity implements LocationListen
     private final static int REQUEST_ID_MULTIPLE_PERMISSIONS = 0x2;
     Spinner visit;
     String unityName = null;
+    String unitid;
     Geocoder geocode;
     String foname, photo, date_time;
     ImageView image;
@@ -152,6 +153,11 @@ public class CheckinActivity extends AppCompatActivity implements LocationListen
 
 
         unityName = UnitListAdapter.unityName;
+        unitid = UnitListAdapter.unityid;
+        SharedPreferences sharedPreferences = CheckinActivity.this.getSharedPreferences(Constants.SHAREDPREFERENCE_KEY, 2); // 0 - for private mode
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(Constants.N_UNIT_ID, unitid);
+        editor.commit();
 
         unit.setText(unityName);
         unit.setOnClickListener(new View.OnClickListener() {
@@ -285,10 +291,10 @@ public class CheckinActivity extends AppCompatActivity implements LocationListen
     private void ContinueCheckin() {
         if (CheckInternet.getNetworkConnectivityStatus(this)) {
             Continue_asyn checkin = new Continue_asyn();
-            String unit_name = unit.getText().toString();
+            String unit_id = unitid;
             String location = loc.getText().toString();
             String dateTime = date_time.toString();
-            checkin.execute(user_id, unit_name, location, dateTime, "1");
+            checkin.execute(user_id, unit_id, location, dateTime, "1");
         } else {
             showsnackbar("No Internet");
         }
@@ -472,9 +478,9 @@ public class CheckinActivity extends AppCompatActivity implements LocationListen
 
             try {
                 String user_id = params[0];
-                String unityname = params[1];
+                String unityid = params[1];
                 String address = params[2];
-                String datetime = params[2];
+                String datetime = params[3];
                 String checkin_status = params[4];
                 InputStream in = null;
                 int resCode = -1;
@@ -493,7 +499,7 @@ public class CheckinActivity extends AppCompatActivity implements LocationListen
 
                 Uri.Builder builder = new Uri.Builder()
                         .appendQueryParameter("user_id", user_id)
-                        .appendQueryParameter("unit_name", unityname)
+                        .appendQueryParameter("unit_id", unitid)
                         .appendQueryParameter("address", address)
                         .appendQueryParameter("checkin_time", datetime)
                         .appendQueryParameter("checkin_status", checkin_status);
@@ -576,7 +582,7 @@ public class CheckinActivity extends AppCompatActivity implements LocationListen
             if (server_status == 1) {
                 showsnackbar("Successfully Checked In.");
 
-                SharedPreferences sharedPreferences = CheckinActivity.this.getSharedPreferences(Constants.SHAREDPREFERENCE_KEY, 1); // 0 - for private mode
+                SharedPreferences sharedPreferences = CheckinActivity.this.getSharedPreferences(Constants.SHAREDPREFERENCE_KEY, 0); // 0 - for private mode
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString(Constants.CHECKIN_ID, id);
                 editor.commit();

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+         <de.hdodenhof.circleimageview.CircleImageView
+             android:id="@+id/unit_img"
+             android:layout_width="100dp"
+             android:layout_height="100dp"
+             android:layout_centerHorizontal="true"
+             android:background="@mipmap/ic_launcher_round"
+             android:layout_marginTop="30dp" />
+         <TextView
+             android:id="@+id/txt_id"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="ID"
+             android:layout_marginLeft="70dp"
+             android:layout_marginTop="20dp"
+             android:layout_below="@+id/unit_img"/>
+         <EditText
+             android:id="@+id/et_id"
+             android:layout_width="200dp"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="10dp"
+             android:layout_centerHorizontal="true"
+             android:layout_marginLeft="20dp"
+             android:layout_below="@+id/unit_img"
+             android:background="@drawable/customedittext"
+             android:layout_toRightOf="@+id/txt_id"/>
+
+
+        <TextView
+            android:id="@+id/txt_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NAME"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="25dp"
+            android:layout_below="@+id/et_id"/>
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@+id/et_id"
+            android:background="@drawable/customedittext"
+            android:layout_toRightOf="@+id/txt_name"/>
+
+        <TextView
+            android:id="@+id/txt_reason"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reason"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="40dp"
+            android:layout_below="@+id/et_name"/>
+        <EditText
+            android:id="@+id/et_reason"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@+id/et_name"
+            android:background="@drawable/customedittext"
+            android:layout_toRightOf="@+id/txt_reason"/>
+
+
+
+
+</RelativeLayout>

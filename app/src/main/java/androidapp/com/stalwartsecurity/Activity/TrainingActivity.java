@@ -35,15 +35,16 @@ import androidapp.com.stalwartsecurity.Util.CheckInternet;
 import androidapp.com.stalwartsecurity.Util.Constants;
 
 /**
- * Created by mobileapplication on 9/4/17.
+ * Created by mobileapplication on 9/7/17.
  */
 
-public class CheckinActivity1 extends AppCompatActivity {
-    EditText alrt_cmnt,vaca_cmnt,grv_cmnt,clnt_cmnt,sum_cmnt,incdnt_cmnt;
+public class TrainingActivity extends AppCompatActivity {
+
+    EditText alrt_cmnt,vaca_cmnt,grv_cmnt,clnt_cmnt,sum_cmnt,incdnt_cmnt,jb_comnt;
     ImageView photo;
     Button submit;
-    RatingBar alrt_rtng,vac_rtng,grv_rtng,clnt_rtng,incdnt_rtng;
-    String alrt_rating_value,vac_rating_value,grv_rating_value,clnt_rating_value,incdnt_rating_value;
+    RatingBar alrt_rtng,vac_rtng,grv_rtng,clnt_rtng,incdnt_rtng,jb_rating;
+    String alrt_rating_value,vac_rating_value,grv_rating_value,clnt_rating_value,incdnt_rating_value,jb_rating_value;
     RelativeLayout linn;
     String user_id,checkin_id;
 
@@ -51,13 +52,10 @@ public class CheckinActivity1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fo_checkin1);
+        setContentView(R.layout.activity_training);
 
 
-
-
-        user_id =CheckinActivity1.this.getSharedPreferences(Constants.SHAREDPREFERENCE_KEY, 0).getString(Constants.N_USER_ID, null);
-        checkin_id =CheckinActivity1.this.getSharedPreferences(Constants.SHAREDPREFERENCE_KEY, 0).getString(Constants.CHECKIN_ID, null);
+        checkin_id =TrainingActivity.this.getSharedPreferences(Constants.SHAREDPREFERENCE_KEY, 0).getString(Constants.CHECKIN_ID, null);
 
 
         linn=(RelativeLayout)findViewById(R.id.linn);
@@ -68,12 +66,14 @@ public class CheckinActivity1 extends AppCompatActivity {
         clnt_cmnt=(EditText)findViewById(R.id.client_cmnt);
         incdnt_cmnt=(EditText)findViewById(R.id.incdnt_cmnt);
         sum_cmnt=(EditText)findViewById(R.id.smry_cmnt);
+        jb_comnt=(EditText)findViewById(R.id.job_knldg_cmnt);
 
         alrt_rtng=(RatingBar)findViewById(R.id.alrt_trnot_rating);
         vac_rtng=(RatingBar)findViewById(R.id.vaca_rating);
         grv_rtng=(RatingBar)findViewById(R.id.gra_rating);
         clnt_rtng=(RatingBar)findViewById(R.id.client_rating);
         incdnt_rtng=(RatingBar)findViewById(R.id.incdnt_rating);
+        jb_rating=(RatingBar)findViewById(R.id.jb_knldg_rating);
 
         photo=(ImageView)findViewById(R.id.unit_img);
         submit=(Button)findViewById(R.id.chkin_submit);
@@ -87,31 +87,37 @@ public class CheckinActivity1 extends AppCompatActivity {
         alrt_rtng.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                 alrt_rating_value=String.valueOf(rating);
+                alrt_rating_value=String.valueOf(rating);
             }
         });
         vac_rtng.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                 vac_rating_value=String.valueOf(rating);
+                vac_rating_value=String.valueOf(rating);
             }
         });
         grv_rtng.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                 grv_rating_value=String.valueOf(rating);
+                grv_rating_value=String.valueOf(rating);
             }
         });
         clnt_rtng.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                 clnt_rating_value=String.valueOf(rating);
+                clnt_rating_value=String.valueOf(rating);
             }
         });
         incdnt_rtng.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                 incdnt_rating_value=String.valueOf(rating);
+                incdnt_rating_value=String.valueOf(rating);
+            }
+        });
+        jb_rating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                jb_rating_value=String.valueOf(rating);
             }
         });
 
@@ -132,54 +138,62 @@ public class CheckinActivity1 extends AppCompatActivity {
         String clntCmnt=clnt_cmnt.getText().toString();
         String incdntCmnt=incdnt_cmnt.getText().toString();
         String sumCmnt=sum_cmnt.getText().toString();
+        String jbkn_cmnt=jb_comnt.getText().toString();
 
         String alert_rating=alrt_rating_value;
         String vac_rating=vac_rating_value;
         String grv_rating=grv_rating_value;
         String client_rating=clnt_rating_value;
         String incdnt_rating=incdnt_rating_value;
+        String jbkn_rating=jb_rating_value;
 
 
-     if(alertcomnt.contentEquals("")){
-         showsnackbar("Give Comments");
+        if(alertcomnt.contentEquals("")){
+            showsnackbar("Give Comments");
 
-     }
-     else if(vacaCmnt.contentEquals("")){
-         showsnackbar("Give Comments");
-     }
-     else if(grvCmnt.contentEquals("")){
-         showsnackbar("Give Comments");
-     }
-     else if(vacaCmnt.contentEquals("")){
-         showsnackbar("Give Comments");
-     }
-     else if(clntCmnt.contentEquals("")){
-         showsnackbar("Give Comments");
-     }
-     else if(incdntCmnt.contentEquals("")){
-         showsnackbar("Give Comments");
-     }
-     else if(sumCmnt.contentEquals("")){
-         showsnackbar("Give Comments");
-     }
-     else if(alert_rating.contentEquals("")){
-         showsnackbar("Give Ratings");
-     }
-     else if(vac_rating.contentEquals("")){
-         showsnackbar("Give Ratings");
-     }
-     else if(grv_rating.contentEquals("")){
-         showsnackbar("Give Ratings");
-     }
-     else if(incdnt_rating.contentEquals("")){
-         showsnackbar("Give Ratings");
-     }
-     else if(client_rating.contentEquals("")){
-         showsnackbar("Give Ratings");
-     }
-     else {
-         CheckinServer();
-     }
+        }
+        else if(vacaCmnt.contentEquals("")){
+            showsnackbar("Give Comments");
+        }
+        else if(grvCmnt.contentEquals("")){
+            showsnackbar("Give Comments");
+        }
+        else if(vacaCmnt.contentEquals("")){
+            showsnackbar("Give Comments");
+        }
+        else if(clntCmnt.contentEquals("")){
+            showsnackbar("Give Comments");
+        }
+        else if(incdntCmnt.contentEquals("")){
+            showsnackbar("Give Comments");
+        }
+        else if(sumCmnt.contentEquals("")){
+            showsnackbar("Give Comments");
+        }
+        else if(jbkn_cmnt.contentEquals("")){
+            showsnackbar("Give Comments");
+        }
+        else if(alert_rating.contentEquals("")){
+            showsnackbar("Give Ratings");
+        }
+        else if(vac_rating.contentEquals("")){
+            showsnackbar("Give Ratings");
+        }
+        else if(grv_rating.contentEquals("")){
+            showsnackbar("Give Ratings");
+        }
+        else if(incdnt_rating.contentEquals("")){
+            showsnackbar("Give Ratings");
+        }
+        else if(client_rating.contentEquals("")){
+            showsnackbar("Give Ratings");
+        }
+        else if(jbkn_rating.contentEquals("")){
+            showsnackbar("Give Ratings");
+        }
+        else {
+            CheckinServer();
+        }
 
 
 
@@ -190,28 +204,31 @@ public class CheckinActivity1 extends AppCompatActivity {
     private void CheckinServer() {
 
         if (CheckInternet.getNetworkConnectivityStatus(this)) {
-            Checkin_asyn checkin = new Checkin_asyn();
-            String checkin_type="1";
+            Training_asyn checkin = new Training_asyn();
+            String checkin_type="2";
             String alertcomnt=alrt_cmnt.getText().toString();
             String vacaCmnt=vaca_cmnt.getText().toString();
             String grvCmnt=grv_cmnt.getText().toString();
             String clntCmnt=clnt_cmnt.getText().toString();
             String incdntCmnt=incdnt_cmnt.getText().toString();
             String sumCmnt=sum_cmnt.getText().toString();
+            String jb_kn_comnt=jb_comnt.getText().toString();
 
             String alert_rating=alrt_rating_value;
             String vac_rating=vac_rating_value;
             String grv_rating=grv_rating_value;
             String client_rating=clnt_rating_value;
             String incdnt_rating=incdnt_rating_value;
-            checkin.execute(checkin_id,checkin_type,alertcomnt,alert_rating,vacaCmnt,vac_rating,grvCmnt,grv_rating,clntCmnt,client_rating,incdntCmnt,incdnt_rating,sumCmnt);
+            String jb_kn_rating=jb_rating_value;
+            checkin.execute(checkin_id,checkin_type,alertcomnt,alert_rating,vacaCmnt,vac_rating,grvCmnt,
+                    grv_rating,clntCmnt,client_rating,incdntCmnt,incdnt_rating,sumCmnt,jb_kn_rating,jb_kn_comnt);
         } else {
             showsnackbar("No Internet");
         }
 
     }
 
-    private class Checkin_asyn extends AsyncTask<String, Void, Void> {
+    private class Training_asyn extends AsyncTask<String, Void, Void> {
 
         private static final String TAG = "SynchMobnum";
         private ProgressDialog progressDialog = null;
@@ -225,7 +242,7 @@ public class CheckinActivity1 extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             if (progressDialog == null) {
-                progressDialog = ProgressDialog.show(CheckinActivity1.this, "Loading", "Please wait...");
+                progressDialog = ProgressDialog.show(TrainingActivity.this, "Loading", "Please wait...");
             }
             // onPreExecuteTask();
         }
@@ -246,6 +263,8 @@ public class CheckinActivity1 extends AppCompatActivity {
                 String incident_ratings = params[9];
                 String summary = params[10];
                 String photo = params[11];
+                String jb_kno_cmnt = params[12];
+                String jb_kn_rtng = params[13];
                 InputStream in = null;
                 int resCode = -1;
 
@@ -272,7 +291,9 @@ public class CheckinActivity1 extends AppCompatActivity {
                         .appendQueryParameter("incident_comments", incident_comments)
                         .appendQueryParameter("incident_ratings", incident_ratings)
                         .appendQueryParameter("summary", summary)
-                        .appendQueryParameter("photo", photo);
+                        .appendQueryParameter("photo", photo)
+                        .appendQueryParameter("photo", jb_kno_cmnt)
+                        .appendQueryParameter("photo", jb_kn_rtng);
 
                 //.appendQueryParameter("deviceid", deviceid);
                 String query = builder.build().getEncodedQuery();
@@ -353,9 +374,9 @@ public class CheckinActivity1 extends AppCompatActivity {
 
             if (server_status == 1) {
 
-                SharedPreferences sharedPreferences = CheckinActivity1.this.getSharedPreferences(Constants.SHAREDPREFERENCE_KEY, 0); // 0 - for private mode
+                SharedPreferences sharedPreferences =TrainingActivity.this.getSharedPreferences(Constants.SHAREDPREFERENCE_KEY,0); // 0 - for private mode
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(Constants.CHECKIN_CHECKIN_TYPE_ID, id);
+                editor.putString(Constants.TRAINING_CHECKIN_TYPE_ID, id);
                 editor.commit();
 
             } else {
@@ -364,3 +385,4 @@ public class CheckinActivity1 extends AppCompatActivity {
         }
     }
 }
+

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/linn">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="70dp">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/gard_no">
+        <include android:id="@+id/no_layout"
+            layout="@layout/guardo_no"
+            android:visibility="gone"></include>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gard's for Alert"
+        android:id="@+id/grd_alert"
+        android:layout_marginTop="10dp"
+        />
+        <Spinner
+            android:id="@+id/grd_spinner"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/customedittext"
+            android:layout_toRightOf="@+id/grd_alert">
+
+        </Spinner>
+
+            <Button
+                android:id="@+id/nt_chkn_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:layout_below="@+id/grd_spinner"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="60dp"/>
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

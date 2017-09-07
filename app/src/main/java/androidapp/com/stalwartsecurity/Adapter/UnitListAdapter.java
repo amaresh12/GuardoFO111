@@ -27,7 +27,7 @@ public class UnitListAdapter extends BaseAdapter {
     Holder holder;
     Context context;
     ArrayList<UnityDetailsLocation> array;
-    public static String unityName;
+    public static String unityName,unityid;
     public static EditText demo_unity;
 
 
@@ -86,6 +86,7 @@ public class UnitListAdapter extends BaseAdapter {
 
                 String id=unity_pos.getLocation_id();
                 unityName=unity_pos.getLocation_name();
+                unityid=unity_pos.getLocation_id();
 
                 Intent intent=new Intent(view.getContext(), CheckinActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

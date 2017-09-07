@@ -94,34 +94,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        tickets=(LinearLayout)findViewById(R.id.ticket_layout);
-        incidents=(LinearLayout)findViewById(R.id.incident_layout);
-        unit_visit=(LinearLayout)findViewById(R.id.unit_visit_layout);
-        unit_visit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i=new Intent(MainActivity.this,CheckinActivity.class);
-                startActivity(i);
-            }
-        });
-        incidents.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i=new Intent(MainActivity.this,IncidentActivity.class);
-                startActivity(i);
-            }
-        });
-
-        tickets.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i=new Intent(MainActivity.this,TicketActivity.class);
-                startActivity(i);
-            }
-        });
-
-
-
     }
 
     private void callunit() {
@@ -212,7 +184,38 @@ public class MainActivity extends AppCompatActivity {
         drawable1 = DrawableCompat.wrap(drawable3);
         DrawableCompat.setTint(drawable3, this.getResources().getColor(R.color.black));
         unitimg.setImageDrawable(drawable3);
+
+        proceedMeeting();
     }
+
+    private void proceedMeeting() {
+
+        new Thread(new Runnable() {
+            public void run() {
+                while (progressStatus < 100) {
+                    progressStatus += 1;
+                    handler.post(new Runnable() {
+                        public void run() {
+                            progressBar1.setProgress(progressStatus);
+                        }
+                    });
+                    try {
+                        Thread.sleep(30);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (progressStatus == 100) {
+                    Intent i = new Intent(MainActivity.this, MeetingActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(i);
+                }
+            }
+        }).start();
+    }
+
 
     private void callNightcheck() {
 
@@ -244,9 +247,41 @@ public class MainActivity extends AppCompatActivity {
         drawable1 = DrawableCompat.wrap(drawable3);
         DrawableCompat.setTint(drawable3, this.getResources().getColor(R.color.black));
         unitimg.setImageDrawable(drawable3);
+        proceedNightCheck();
 
 
     }
+
+    private void proceedNightCheck() {
+
+        new Thread(new Runnable() {
+            public void run() {
+                while (progressStatus < 100) {
+                    progressStatus += 1;
+                    handler.post(new Runnable() {
+                        public void run() {
+                            progressBar1.setProgress(progressStatus);
+                        }
+                    });
+                    try {
+                        Thread.sleep(30);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (progressStatus == 100) {
+                    Intent i = new Intent(MainActivity.this, NightCheckActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(i);
+                }
+            }
+        }).start();
+    }
+
+
+
 
 
     private void calltraining() {
@@ -278,7 +313,38 @@ public class MainActivity extends AppCompatActivity {
         drawable1 = DrawableCompat.wrap(drawable3);
         DrawableCompat.setTint(drawable3, this.getResources().getColor(R.color.black));
         nightchk_img.setImageDrawable(drawable3);
+        proceedTraining();
     }
+
+    private void proceedTraining() {
+
+        new Thread(new Runnable() {
+            public void run() {
+                while (progressStatus < 100) {
+                    progressStatus += 1;
+                    handler.post(new Runnable() {
+                        public void run() {
+                            progressBar1.setProgress(progressStatus);
+                        }
+                    });
+                    try {
+                        Thread.sleep(30);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (progressStatus == 100) {
+                    Intent i = new Intent(MainActivity.this, TrainingActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(i);
+                }
+            }
+        }).start();
+    }
+
+
 
    /* @Override
     public void finish() {
