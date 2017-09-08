@@ -13,7 +13,12 @@
             android:layout_width="match_parent"
             android:layout_margin="20dp"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <include android:id="@+id/signatore_form"
+                layout="@layout/signator"
+                android:visibility="gone"></include>
 
 
 
@@ -136,26 +141,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/et_comment_issue"
                 android:hint="Comments"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:text=" 5. Add Photo"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@mipmap/ic_add_white_24dp"
-                android:backgroundTint="@color/commentcolour"
-                android:layout_gravity="center"
-                android:layout_marginTop="-14dp"/>
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="10dp"
-                android:visibility="gone"
-                android:layout_gravity="center"/>
 
             <Button
+                android:id="@+id/next"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:layout_marginBottom="30dp"
