@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/mobileapplication/.android/build-cache/b463e48145f0df59e1ff55b809c6644d60cac141/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="38789e20ace9ab7dbd00554bd2673ab424478d3b">
+        <dex dex="/Users/mobileapplication/Desktop/AndroidWorks/LatestGuardo/Guardo/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_2d31006e9000549764fa7fabdfd57ccab87ae219/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mobileapplication/.android/build-cache/85cc66589720471b7c092d14b614f2aa8b90f2de/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d4cf6227dd6a2ceff0f7dcf0c324380b7abf2c28">
+        <dex dex="/Users/mobileapplication/Desktop/AndroidWorks/LatestGuardo/Guardo/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_2c0e15c38bc366e6ee355b2c20b14ceb1904afbc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mobileapplication/.android/build-cache/0e2045c87c0142b1c1767a3f5cc51c32122949c1/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="95519720620b553f63afc789beba9ad582807f7c">
+        <dex dex="/Users/mobileapplication/Desktop/AndroidWorks/LatestGuardo/Guardo/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_f32c288feb266873aa3b92d38b824e678b7fa16a/classes.dex" />
+    </item>
+
+</items>

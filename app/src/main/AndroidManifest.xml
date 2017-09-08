@@ -82,7 +82,8 @@
         <activity android:name=".Activity.OfficerReportActivity"></activity>
 
         <activity android:name=".Activity.UnitList"></activity>
-        <activity android:name=".Activity.CheckinActivity1"></activity>
+        <activity android:name=".Activity.CheckinActivity1"
+            android:label="Unit Visit"></activity>
         <activity android:name=".Activity.TrainingActivity"></activity>
         <activity android:name=".Activity.NightCheckActivity"></activity>
         <activity android:name=".Activity.MeetingActivity"></activity>

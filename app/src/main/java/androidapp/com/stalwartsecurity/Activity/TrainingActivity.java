@@ -1,6 +1,7 @@
 package androidapp.com.stalwartsecurity.Activity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -29,6 +30,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import androidapp.com.stalwartsecurity.R;
 import androidapp.com.stalwartsecurity.Util.CheckInternet;
@@ -40,13 +44,13 @@ import androidapp.com.stalwartsecurity.Util.Constants;
 
 public class TrainingActivity extends AppCompatActivity {
 
-    EditText alrt_cmnt,vaca_cmnt,grv_cmnt,clnt_cmnt,sum_cmnt,incdnt_cmnt,jb_comnt;
+    EditText alrt_cmnt, vaca_cmnt, grv_cmnt, clnt_cmnt, sum_cmnt, incdnt_cmnt, jb_comnt;
     ImageView photo;
     Button submit;
-    RatingBar alrt_rtng,vac_rtng,grv_rtng,clnt_rtng,incdnt_rtng,jb_rating;
-    String alrt_rating_value,vac_rating_value,grv_rating_value,clnt_rating_value,incdnt_rating_value,jb_rating_value;
+    RatingBar alrt_rtng, vac_rtng, grv_rtng, clnt_rtng, incdnt_rtng, jb_rating;
+    String alrt_rating_value, vac_rating_value, grv_rating_value, clnt_rating_value, incdnt_rating_value, jb_rating_value;
     RelativeLayout linn;
-    String user_id,checkin_id;
+    String user_id, checkin_id, date_time;
 
 
     @Override
@@ -55,28 +59,32 @@ public class TrainingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_training);
 
 
-        checkin_id =TrainingActivity.this.getSharedPreferences(Constants.SHAREDPREFERENCE_KEY, 0).getString(Constants.CHECKIN_ID, null);
+        checkin_id = TrainingActivity.this.getSharedPreferences(Constants.SHAREDPREFERENCE_KEY, 0).getString(Constants.CHECKIN_ID, null);
 
 
-        linn=(RelativeLayout)findViewById(R.id.linn);
+        DateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy hh:mma");
+        dateFormatter.setLenient(false);
+        Date today = new Date();
+        date_time = dateFormatter.format(today);
+        linn = (RelativeLayout) findViewById(R.id.linn);
 
-        alrt_cmnt=(EditText)findViewById(R.id.alrt_trnot_cmnt);
-        vaca_cmnt=(EditText)findViewById(R.id.vaca_cmnt);
-        grv_cmnt=(EditText)findViewById(R.id.gra_cmnt);
-        clnt_cmnt=(EditText)findViewById(R.id.client_cmnt);
-        incdnt_cmnt=(EditText)findViewById(R.id.incdnt_cmnt);
-        sum_cmnt=(EditText)findViewById(R.id.smry_cmnt);
-        jb_comnt=(EditText)findViewById(R.id.job_knldg_cmnt);
+        alrt_cmnt = (EditText) findViewById(R.id.alrt_trnot_cmnt);
+        vaca_cmnt = (EditText) findViewById(R.id.vaca_cmnt);
+        grv_cmnt = (EditText) findViewById(R.id.gra_cmnt);
+        clnt_cmnt = (EditText) findViewById(R.id.client_cmnt);
+        incdnt_cmnt = (EditText) findViewById(R.id.incdnt_cmnt);
+        sum_cmnt = (EditText) findViewById(R.id.smry_cmnt);
+        jb_comnt = (EditText) findViewById(R.id.job_knldg_cmnt);
 
-        alrt_rtng=(RatingBar)findViewById(R.id.alrt_trnot_rating);
-        vac_rtng=(RatingBar)findViewById(R.id.vaca_rating);
-        grv_rtng=(RatingBar)findViewById(R.id.gra_rating);
-        clnt_rtng=(RatingBar)findViewById(R.id.client_rating);
-        incdnt_rtng=(RatingBar)findViewById(R.id.incdnt_rating);
-        jb_rating=(RatingBar)findViewById(R.id.jb_knldg_rating);
+        alrt_rtng = (RatingBar) findViewById(R.id.alrt_trnot_rating);
+        vac_rtng = (RatingBar) findViewById(R.id.vaca_rating);
+        grv_rtng = (RatingBar) findViewById(R.id.gra_rating);
+        clnt_rtng = (RatingBar) findViewById(R.id.client_rating);
+        incdnt_rtng = (RatingBar) findViewById(R.id.incdnt_rating);
+        jb_rating = (RatingBar) findViewById(R.id.jb_knldg_rating);
 
-        photo=(ImageView)findViewById(R.id.unit_img);
-        submit=(Button)findViewById(R.id.chkin_submit);
+        photo = (ImageView) findViewById(R.id.unit_img);
+        submit = (Button) findViewById(R.id.trng_submit);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,37 +95,37 @@ public class TrainingActivity extends AppCompatActivity {
         alrt_rtng.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                alrt_rating_value=String.valueOf(rating);
+                alrt_rating_value = String.valueOf(rating);
             }
         });
         vac_rtng.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                vac_rating_value=String.valueOf(rating);
+                vac_rating_value = String.valueOf(rating);
             }
         });
         grv_rtng.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                grv_rating_value=String.valueOf(rating);
+                grv_rating_value = String.valueOf(rating);
             }
         });
         clnt_rtng.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                clnt_rating_value=String.valueOf(rating);
+                clnt_rating_value = String.valueOf(rating);
             }
         });
         incdnt_rtng.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                incdnt_rating_value=String.valueOf(rating);
+                incdnt_rating_value = String.valueOf(rating);
             }
         });
         jb_rating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                jb_rating_value=String.valueOf(rating);
+                jb_rating_value = String.valueOf(rating);
             }
         });
 
@@ -132,71 +140,54 @@ public class TrainingActivity extends AppCompatActivity {
 
     private void validatefields() {
 
-        String alertcomnt=alrt_cmnt.getText().toString();
-        String vacaCmnt=vaca_cmnt.getText().toString();
-        String grvCmnt=grv_cmnt.getText().toString();
-        String clntCmnt=clnt_cmnt.getText().toString();
-        String incdntCmnt=incdnt_cmnt.getText().toString();
-        String sumCmnt=sum_cmnt.getText().toString();
-        String jbkn_cmnt=jb_comnt.getText().toString();
+        String alertcomnt = alrt_cmnt.getText().toString();
+        String vacaCmnt = vaca_cmnt.getText().toString();
+        String grvCmnt = grv_cmnt.getText().toString();
+        String clntCmnt = clnt_cmnt.getText().toString();
+        String incdntCmnt = incdnt_cmnt.getText().toString();
+        String sumCmnt = sum_cmnt.getText().toString();
+        String jbkn_cmnt = jb_comnt.getText().toString();
 
-        String alert_rating=alrt_rating_value;
-        String vac_rating=vac_rating_value;
-        String grv_rating=grv_rating_value;
-        String client_rating=clnt_rating_value;
-        String incdnt_rating=incdnt_rating_value;
-        String jbkn_rating=jb_rating_value;
+        String alert_rating = alrt_rating_value;
+        String vac_rating = vac_rating_value;
+        String grv_rating = grv_rating_value;
+        String client_rating = clnt_rating_value;
+        String incdnt_rating = incdnt_rating_value;
+        String jbkn_rating = jb_rating_value;
 
 
-        if(alertcomnt.contentEquals("")){
+        if (alertcomnt.contentEquals("")) {
             showsnackbar("Give Comments");
 
-        }
-        else if(vacaCmnt.contentEquals("")){
+        } else if (vacaCmnt.contentEquals("")) {
             showsnackbar("Give Comments");
-        }
-        else if(grvCmnt.contentEquals("")){
+        } else if (grvCmnt.contentEquals("")) {
             showsnackbar("Give Comments");
-        }
-        else if(vacaCmnt.contentEquals("")){
+        } else if (vacaCmnt.contentEquals("")) {
             showsnackbar("Give Comments");
-        }
-        else if(clntCmnt.contentEquals("")){
+        } else if (clntCmnt.contentEquals("")) {
             showsnackbar("Give Comments");
-        }
-        else if(incdntCmnt.contentEquals("")){
+        } else if (incdntCmnt.contentEquals("")) {
             showsnackbar("Give Comments");
-        }
-        else if(sumCmnt.contentEquals("")){
+        } else if (sumCmnt.contentEquals("")) {
             showsnackbar("Give Comments");
-        }
-        else if(jbkn_cmnt.contentEquals("")){
+        } else if (jbkn_cmnt.contentEquals("")) {
             showsnackbar("Give Comments");
-        }
-        else if(alert_rating.contentEquals("")){
+        } else if (alert_rating.contentEquals("")) {
             showsnackbar("Give Ratings");
-        }
-        else if(vac_rating.contentEquals("")){
+        } else if (vac_rating.contentEquals("")) {
             showsnackbar("Give Ratings");
-        }
-        else if(grv_rating.contentEquals("")){
+        } else if (grv_rating.contentEquals("")) {
             showsnackbar("Give Ratings");
-        }
-        else if(incdnt_rating.contentEquals("")){
+        } else if (incdnt_rating.contentEquals("")) {
             showsnackbar("Give Ratings");
-        }
-        else if(client_rating.contentEquals("")){
+        } else if (client_rating.contentEquals("")) {
             showsnackbar("Give Ratings");
-        }
-        else if(jbkn_rating.contentEquals("")){
+        } else if (jbkn_rating.contentEquals("")) {
             showsnackbar("Give Ratings");
-        }
-        else {
+        } else {
             CheckinServer();
         }
-
-
-
 
 
     }
@@ -205,23 +196,24 @@ public class TrainingActivity extends AppCompatActivity {
 
         if (CheckInternet.getNetworkConnectivityStatus(this)) {
             Training_asyn checkin = new Training_asyn();
-            String checkin_type="2";
-            String alertcomnt=alrt_cmnt.getText().toString();
-            String vacaCmnt=vaca_cmnt.getText().toString();
-            String grvCmnt=grv_cmnt.getText().toString();
-            String clntCmnt=clnt_cmnt.getText().toString();
-            String incdntCmnt=incdnt_cmnt.getText().toString();
-            String sumCmnt=sum_cmnt.getText().toString();
-            String jb_kn_comnt=jb_comnt.getText().toString();
+            String checkin_type = "2";
+            String alertcomnt = alrt_cmnt.getText().toString();
+            String vacaCmnt = vaca_cmnt.getText().toString();
+            String grvCmnt = grv_cmnt.getText().toString();
+            String clntCmnt = clnt_cmnt.getText().toString();
+            String incdntCmnt = incdnt_cmnt.getText().toString();
+            String sumCmnt = sum_cmnt.getText().toString();
+            String jb_kn_comnt = jb_comnt.getText().toString();
 
-            String alert_rating=alrt_rating_value;
-            String vac_rating=vac_rating_value;
-            String grv_rating=grv_rating_value;
-            String client_rating=clnt_rating_value;
-            String incdnt_rating=incdnt_rating_value;
-            String jb_kn_rating=jb_rating_value;
-            checkin.execute(checkin_id,checkin_type,alertcomnt,alert_rating,vacaCmnt,vac_rating,grvCmnt,
-                    grv_rating,clntCmnt,client_rating,incdntCmnt,incdnt_rating,sumCmnt,jb_kn_rating,jb_kn_comnt);
+            String alert_rating = alrt_rating_value;
+            String vac_rating = vac_rating_value;
+            String grv_rating = grv_rating_value;
+            String client_rating = clnt_rating_value;
+            String incdnt_rating = incdnt_rating_value;
+            String jb_kn_rating = jb_rating_value;
+            String photo = "";
+            checkin.execute(checkin_id, checkin_type, alertcomnt, alert_rating, vacaCmnt, vac_rating, grvCmnt,
+                    grv_rating, clntCmnt, client_rating, incdntCmnt, incdnt_rating, sumCmnt, jb_kn_rating, jb_kn_comnt, photo, date_time);
         } else {
             showsnackbar("No Internet");
         }
@@ -257,14 +249,17 @@ public class TrainingActivity extends AppCompatActivity {
                 String alertness_ratings = params[3];
                 String vacancies_comments = params[4];
                 String vacancies_ratings = params[5];
-                String client_comments = params[6];
-                String client_ratings = params[7];
-                String incident_comments = params[8];
-                String incident_ratings = params[9];
-                String summary = params[10];
-                String photo = params[11];
-                String jb_kno_cmnt = params[12];
-                String jb_kn_rtng = params[13];
+                String gra_comments = params[6];
+                String gra_ratings = params[7];
+                String client_comments = params[8];
+                String client_ratings = params[9];
+                String incident_comments = params[10];
+                String incident_ratings = params[11];
+                String summary = params[12];
+                String photo = params[13];
+                String jb_kno_cmnt = params[14];
+                String jb_kn_rtng = params[15];
+                String date_time = params[16];
                 InputStream in = null;
                 int resCode = -1;
 
@@ -287,13 +282,17 @@ public class TrainingActivity extends AppCompatActivity {
                         .appendQueryParameter("alertness_ratings", alertness_ratings)
                         .appendQueryParameter("vacancies_comments", vacancies_comments)
                         .appendQueryParameter("vacancies_ratings", vacancies_ratings)
+                        .appendQueryParameter("grievance_comments", gra_comments)
+                        .appendQueryParameter("grievance_ratings", gra_ratings)
                         .appendQueryParameter("client_comments", client_comments)
+                        .appendQueryParameter("client_ratings", client_ratings)
                         .appendQueryParameter("incident_comments", incident_comments)
                         .appendQueryParameter("incident_ratings", incident_ratings)
                         .appendQueryParameter("summary", summary)
                         .appendQueryParameter("photo", photo)
-                        .appendQueryParameter("photo", jb_kno_cmnt)
-                        .appendQueryParameter("photo", jb_kn_rtng);
+                        .appendQueryParameter("jobknowledge_comments", jb_kno_cmnt)
+                        .appendQueryParameter("jobknowledge_ratings", jb_kn_rtng)
+                        .appendQueryParameter("date_time", date_time);
 
                 //.appendQueryParameter("deviceid", deviceid);
                 String query = builder.build().getEncodedQuery();
@@ -371,18 +370,36 @@ public class TrainingActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void user) {
             super.onPostExecute(user);
+            progressDialog.cancel();
 
             if (server_status == 1) {
 
-                SharedPreferences sharedPreferences =TrainingActivity.this.getSharedPreferences(Constants.SHAREDPREFERENCE_KEY,0); // 0 - for private mode
+                SharedPreferences sharedPreferences = TrainingActivity.this.getSharedPreferences(Constants.SHAREDPREFERENCE_KEY, 0); // 0 - for private mode
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString(Constants.TRAINING_CHECKIN_TYPE_ID, id);
                 editor.commit();
+                Intent i = new Intent(TrainingActivity.this, CheckinActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(i);
+                finish();
 
             } else {
-                showsnackbar("Successfully added");
+                showsnackbar(server_message);
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(TrainingActivity.this, CheckinActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(i);
+        finish();
     }
 }
 

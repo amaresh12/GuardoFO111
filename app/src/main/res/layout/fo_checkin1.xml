@@ -3,174 +3,310 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/linn">
-
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp">
 
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/unit_img"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
-            android:background="@mipmap/ic_launcher_round"
-            android:layout_marginTop="0dp"/>
-        <TextView
-            android:id="@+id/alrt_trnot"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alertness/Turnout"
-            android:layout_below="@+id/unit_img"
-            />
-
-        <EditText
-            android:id="@+id/alrt_trnot_cmnt"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:hint="Type your comments"
-            android:layout_below="@+id/alrt_trnot"
-            android:layout_marginTop="20dp"
-            android:layout_toRightOf="@+id/alrt_trnot"
-            android:background="@drawable/customedittext"/>
-        <RatingBar
-            android:id="@+id/alrt_trnot_rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/alrt_trnot_cmnt"
-            android:layout_centerInParent="true"/>
-        <TextView
-            android:id="@+id/vacancies"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alertness/Turnout"
-            android:layout_below="@+id/alrt_trnot_rating"
-            />
-
-        <EditText
-            android:id="@+id/vaca_cmnt"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:hint="type your comments"
-            android:layout_marginTop="20dp"
-            android:layout_toRightOf="@+id/vacancies"
-            android:layout_below="@+id/vacancies"
-            android:background="@drawable/customedittext"/>
-        <RatingBar
-            android:id="@+id/vaca_rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/vaca_cmnt"
-            android:layout_centerInParent="true"/>
-        <TextView
-            android:id="@+id/grivensis"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Grievancies"
-            android:layout_below="@+id/vaca_rating"
-            />
-
-        <EditText
-            android:id="@+id/gra_cmnt"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:hint="type your comments"
-            android:layout_marginTop="20dp"
-            android:layout_toRightOf="@+id/grivensis"
-            android:layout_below="@+id/grivensis"
-            android:background="@drawable/customedittext"/>
-        <RatingBar
-            android:id="@+id/gra_rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/gra_cmnt"
-            android:layout_centerInParent="true"/>
-
-        <TextView
-            android:id="@+id/client_satisfaction"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Client Satisfaction"
-            android:layout_below="@+id/gra_rating"
-            />
-
-        <EditText
-            android:id="@+id/client_cmnt"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:hint="type your comments"
-            android:layout_marginTop="20dp"
-            android:layout_toRightOf="@+id/client_satisfaction"
-            android:layout_below="@+id/client_satisfaction"
-            android:background="@drawable/customedittext"/>
-        <RatingBar
-            android:id="@+id/client_rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/client_cmnt"
-            android:layout_centerInParent="true"/>
-
-        <TextView
-            android:id="@+id/incdnt_isues"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Incident/Issues"
-            android:layout_below="@+id/client_rating"
-            />
-
-        <EditText
-            android:id="@+id/incdnt_cmnt"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:hint="type your comments"
-            android:layout_marginTop="20dp"
-            android:layout_toRightOf="@+id/incdnt_isues"
-            android:layout_below="@+id/incdnt_isues"
-            android:background="@drawable/customedittext"/>
-        <RatingBar
-            android:id="@+id/incdnt_rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/incdnt_cmnt"
-            android:layout_centerInParent="true"/>
-        <TextView
-            android:id="@+id/summary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Summary"
-            android:layout_below="@+id/incdnt_rating"
-            />
-
-        <EditText
-            android:id="@+id/smry_cmnt"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:hint="type your comments"
-            android:layout_marginTop="20dp"
-            android:layout_toRightOf="@+id/summary"
-            android:layout_below="@+id/summary"
-            android:background="@drawable/customedittext"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_margin="20dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
 
 
-      <Button
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:id="@+id/chkin_submit"
-          android:text="Submit"
-          android:layout_below="@+id/smry_cmnt"
-          android:layout_centerHorizontal="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:text=" 1. Alertness / Turnout"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <ImageButton
+                    android:layout_width="30dp"
+                    android:id="@+id/imgbt_alertmin"
+                    android:src="@mipmap/ic_remove_white_24dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/commentcolour"
+                    />
+                <EditText
+                    android:layout_width="150dp"
+                    android:text="Good"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:id="@+id/et_alert"
+                    android:background="@drawable/customcomment"
+                    android:layout_height="match_parent"
+                    />
+                <ImageButton
+                    android:layout_width="30dp"
+                    android:id="@+id/imgbt_alertplus"
+                    android:src="@mipmap/ic_add_white_24dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/commentcolour"/>
+            </LinearLayout>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_comment_alert"
+                android:hint="Comments"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text=" 4. Client Satisfaction"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <ImageButton
+                    android:layout_width="30dp"
+                    android:id="@+id/imgbt_staisfymin"
+                    android:src="@mipmap/ic_remove_white_24dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/commentcolour"
+                    />
+                <EditText
+                    android:layout_width="150dp"
+                    android:text="Good"
+                    android:id="@+id/et_satisfy"
+                    android:gravity="center"
+                    android:focusable="false"
+                    android:background="@drawable/customcomment"
+                    android:layout_height="match_parent"
+                    />
+                <ImageButton
+                    android:layout_width="30dp"
+                    android:id="@+id/imgbt_staisfyplus"
+                    android:src="@mipmap/ic_add_white_24dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/commentcolour"/>
+            </LinearLayout>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_comment_satis"
+                android:hint="Comments"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text=" 5. Incident / Issues"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <ImageButton
+                    android:layout_width="30dp"
+                    android:id="@+id/imgbt_issuemin"
+                    android:src="@mipmap/ic_remove_white_24dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/commentcolour"
+                    />
+                <EditText
+                    android:layout_width="150dp"
+                    android:text="More"
+                    android:gravity="center"
+                    android:focusable="false"
+                    android:id="@+id/et_issue"
+                    android:background="@drawable/customcomment"
+                    android:layout_height="match_parent"
+                    />
+                <ImageButton
+                    android:layout_width="30dp"
+                    android:id="@+id/imgbt_issueplus"
+                    android:src="@mipmap/ic_add_white_24dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/commentcolour"/>
+            </LinearLayout>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/et_comment_issue"
+                android:hint="Comments"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text=" 5. Add Photo"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/ic_add_white_24dp"
+                android:backgroundTint="@color/commentcolour"
+                android:layout_gravity="center"
+                android:layout_marginTop="-14dp"/>
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                android:layout_gravity="center"/>
 
-    </RelativeLayout>
-
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/commentcolour"
+                android:text="submit"
+                android:textColor="@color/white"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
     </ScrollView>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp">
 
+            <TextView
+                android:id="@+id/alrt_trnot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alertness/Turnout"
+                />
+            <EditText
+                android:id="@+id/alrt_trnot_cmnt"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:hint="Type your comments"
+                android:layout_below="@+id/alrt_trnot"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/alrt_trnot"
+                android:background="@drawable/customedittext"/>
+            <RatingBar
+                android:id="@+id/alrt_trnot_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/alrt_trnot_cmnt"
+                android:layout_centerInParent="true"/>
+            <TextView
+                android:id="@+id/vacancies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Alertness/Turnout"
+                android:layout_below="@+id/alrt_trnot_rating"
+                />
+            <EditText
+                android:id="@+id/vaca_cmnt"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:hint="type your comments"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/vacancies"
+                android:layout_below="@+id/vacancies"
+                android:background="@drawable/customedittext"/>
+            <RatingBar
+                android:id="@+id/vaca_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/vaca_cmnt"
+                android:layout_centerInParent="true"/>
+            <TextView
+                android:id="@+id/grivensis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Grievancies"
+                android:layout_below="@+id/vaca_rating"
+                />
+            <EditText
+                android:id="@+id/gra_cmnt"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:hint="type your comments"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/grivensis"
+                android:layout_below="@+id/grivensis"
+                android:background="@drawable/customedittext"/>
+            <RatingBar
+                android:id="@+id/gra_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gra_cmnt"
+                android:layout_centerInParent="true"/>
+            <TextView
+                android:id="@+id/client_satisfaction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Client Satisfaction"
+                android:layout_below="@+id/gra_rating"
+                />
+            <EditText
+                android:id="@+id/client_cmnt"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:hint="type your comments"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/client_satisfaction"
+                android:layout_below="@+id/client_satisfaction"
+                android:background="@drawable/customedittext"/>
+            <RatingBar
+                android:id="@+id/client_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/client_cmnt"
+                android:layout_centerInParent="true"/>
+            <TextView
+                android:id="@+id/incdnt_isues"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Incident/Issues"
+                android:layout_below="@+id/client_rating"
+                />
+            <EditText
+                android:id="@+id/incdnt_cmnt"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:hint="type your comments"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/incdnt_isues"
+                android:layout_below="@+id/incdnt_isues"
+                android:background="@drawable/customedittext"/>
+            <RatingBar
+                android:id="@+id/incdnt_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/incdnt_cmnt"
+                android:layout_centerInParent="true"/>
+            <TextView
+                android:id="@+id/summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Summary"
+                android:layout_below="@+id/incdnt_rating"
+                />
+            <EditText
+                android:id="@+id/smry_cmnt"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:hint="type your comments"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@+id/summary"
+                android:layout_below="@+id/summary"
+                android:background="@drawable/customedittext"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/chkin_submit"
+                android:text="Submit"
+                android:layout_below="@+id/smry_cmnt"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>

@@ -1,7 +1,9 @@
 package androidapp.com.stalwartsecurity.Activity;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -64,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
         dateFormatter.setLenient(false);
         Date today = new Date();
         txt_time.setText(dateFormatter.format(today));
-
         unit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -134,6 +135,8 @@ public class MainActivity extends AppCompatActivity {
                     progressStatus += 1;
                     handler.post(new Runnable() {
                         public void run() {
+                            int colorCodeDark = Color.parseColor("#8700a5");
+                            progressBar1.setProgressTintList(ColorStateList.valueOf(colorCodeDark));
                             progressBar1.setProgress(progressStatus);
                         }
                     });
@@ -150,7 +153,8 @@ public class MainActivity extends AppCompatActivity {
                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         startActivity(i);
-                    }
+
+                }
             }
         }).start();
     }
@@ -196,6 +200,8 @@ public class MainActivity extends AppCompatActivity {
                     progressStatus += 1;
                     handler.post(new Runnable() {
                         public void run() {
+                            int colorCodeDark = Color.parseColor("#d57600");
+                            progressBar1.setProgressTintList(ColorStateList.valueOf(colorCodeDark));
                             progressBar1.setProgress(progressStatus);
                         }
                     });
@@ -260,6 +266,8 @@ public class MainActivity extends AppCompatActivity {
                     progressStatus += 1;
                     handler.post(new Runnable() {
                         public void run() {
+                            int colorCodeDark = Color.parseColor("#50a700");
+                            progressBar1.setProgressTintList(ColorStateList.valueOf(colorCodeDark));
                             progressBar1.setProgress(progressStatus);
                         }
                     });
@@ -324,6 +332,8 @@ public class MainActivity extends AppCompatActivity {
                     progressStatus += 1;
                     handler.post(new Runnable() {
                         public void run() {
+                            int colorCodeDark = Color.parseColor("#8C9EFF");
+                            progressBar1.setProgressTintList(ColorStateList.valueOf(colorCodeDark));
                             progressBar1.setProgress(progressStatus);
                         }
                     });

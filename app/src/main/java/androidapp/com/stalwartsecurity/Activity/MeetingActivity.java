@@ -1,6 +1,7 @@
 package androidapp.com.stalwartsecurity.Activity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -29,6 +30,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.SocketTimeoutException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import androidapp.com.stalwartsecurity.R;
 import androidapp.com.stalwartsecurity.Util.CheckInternet;
@@ -47,7 +51,7 @@ public class MeetingActivity extends AppCompatActivity {
     RatingBar alrt_rtng,vac_rtng,grv_rtng,clnt_rtng,incdnt_rtng;
     String alrt_rating_value,vac_rating_value,grv_rating_value,clnt_rating_value,incdnt_rating_value;
     RelativeLayout linn;
-    String user_id,checkin_id;
+    String user_id,checkin_id,date_time;
 
 
 
@@ -58,7 +62,10 @@ public class MeetingActivity extends AppCompatActivity {
 
         checkin_id =MeetingActivity.this.getSharedPreferences(Constants.SHAREDPREFERENCE_KEY, 0).getString(Constants.CHECKIN_ID, null);
 
-
+        DateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy hh:mma");
+        dateFormatter.setLenient(false);
+        Date today = new Date();
+        date_time = dateFormatter.format(today);
         linn=(RelativeLayout)findViewById(R.id.linn);
 
         alrt_cmnt=(EditText)findViewById(R.id.alrt_trnot_cmnt);
@@ -203,7 +210,9 @@ public class MeetingActivity extends AppCompatActivity {
             String grv_rating=grv_rating_value;
             String client_rating=clnt_rating_value;
             String incdnt_rating=incdnt_rating_value;
-            checkin.execute(checkin_id,checkin_type,alertcomnt,alert_rating,vacaCmnt,vac_rating,grvCmnt,grv_rating,clntCmnt,client_rating,incdntCmnt,incdnt_rating,sumCmnt);
+            String photo="";
+            checkin.execute(checkin_id,checkin_type,alertcomnt,alert_rating,vacaCmnt,
+                    vac_rating,grvCmnt,grv_rating,clntCmnt,client_rating,incdntCmnt,incdnt_rating,sumCmnt,photo,date_time);
         } else {
             showsnackbar("No Internet");
         }
@@ -239,12 +248,15 @@ public class MeetingActivity extends AppCompatActivity {
                 String alertness_ratings = params[3];
                 String vacancies_comments = params[4];
                 String vacancies_ratings = params[5];
-                String client_comments = params[6];
-                String client_ratings = params[7];
-                String incident_comments = params[8];
-                String incident_ratings = params[9];
-                String summary = params[10];
-                String photo = params[11];
+                String gra_comments = params[6];
+                String gra_ratings = params[7];
+                String client_comments = params[8];
+                String client_ratings = params[9];
+                String incident_comments = params[10];
+                String incident_ratings = params[11];
+                String summary = params[12];
+                String photo = params[13];
+                String date_time = params[14];
                 InputStream in = null;
                 int resCode = -1;
 
@@ -267,11 +279,15 @@ public class MeetingActivity extends AppCompatActivity {
                         .appendQueryParameter("alertness_ratings", alertness_ratings)
                         .appendQueryParameter("vacancies_comments", vacancies_comments)
                         .appendQueryParameter("vacancies_ratings", vacancies_ratings)
+                        .appendQueryParameter("grievance_comments", gra_comments)
+                        .appendQueryParameter("grievance_ratings", gra_ratings)
                         .appendQueryParameter("client_comments", client_comments)
+                        .appendQueryParameter("client_ratings", client_ratings)
                         .appendQueryParameter("incident_comments", incident_comments)
                         .appendQueryParameter("incident_ratings", incident_ratings)
                         .appendQueryParameter("summary", summary)
-                        .appendQueryParameter("photo", photo);
+                        .appendQueryParameter("photo", photo)
+                        .appendQueryParameter("date_time", date_time);
 
                 //.appendQueryParameter("deviceid", deviceid);
                 String query = builder.build().getEncodedQuery();
@@ -356,10 +372,25 @@ public class MeetingActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString(Constants.MEETING_CHECKIN_TYPE_ID, id);
                 editor.commit();
+                Intent i=new Intent(MeetingActivity.this,CheckinActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(i);
+                finish();
 
             } else {
                 showsnackbar("Successfully added");
             }
         }
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i=new Intent(MeetingActivity.this,CheckinActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(i);
     }
 }

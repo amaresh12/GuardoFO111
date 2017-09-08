@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/linn">
 
 
     <ScrollView
@@ -162,7 +163,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/submit"
+                android:id="@+id/chkin_submit"
                 android:text="Submit"
                 android:layout_below="@+id/smry_cmnt"
                 android:layout_centerHorizontal="true"/>

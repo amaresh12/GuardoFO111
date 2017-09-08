@@ -10,6 +10,7 @@
     <color name="colorPrimary1">#D2EEE3</color>
     <color name="ofcolor">#C5E9CD</color>
     <color name="colorAccent">#000000</color>
+    <color name="training">#8C9EFF</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="white_color">#ffffff</color>
     <color name="white">#FFFFFF</color>
@@ -24,6 +25,7 @@
     <color name="background1">#4789e3</color>
     <color name="red">#f02424</color>
     <color name="light_red">#FBC2C2</color>
+    <color name="commentcolour">#fa585e</color>
     <color name="green">#2a6d3d</color>
     <color name="light_green">#B7FFAD</color>
     <color name="lightgreen">#2a6d3d</color>
