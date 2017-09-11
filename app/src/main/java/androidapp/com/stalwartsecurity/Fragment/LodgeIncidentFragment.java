@@ -3,13 +3,20 @@ package androidapp.com.stalwartsecurity.Fragment;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,21 +27,41 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.ConnectException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.SocketTimeoutException;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
+import androidapp.com.stalwartsecurity.Activity.MainActivity;
+import androidapp.com.stalwartsecurity.Activity.UnitList;
 import androidapp.com.stalwartsecurity.Adapter.ImageListAdapter;
 import androidapp.com.stalwartsecurity.R;
+import androidapp.com.stalwartsecurity.Util.CheckInternet;
+import androidapp.com.stalwartsecurity.Util.Constants;
 
 public class LodgeIncidentFragment extends Fragment {
     Button next,next1;
@@ -46,16 +73,22 @@ public class LodgeIncidentFragment extends Fragment {
     ImageListAdapter imageadapter;
     private final static int RESULT_SELECT_IMAGE = 100;
     private static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
-    EditText log_date;
+    EditText log_date,log_time;
     Calendar myCalendar;
     ImageView camera_img,gallery_img;
+    public static TextView unity_name;
+    public static String unityid;
+    FrameLayout linn;
     //Integer array= new Integer(R.drawable.image);
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view=inflater.inflate(R.layout.lodge_fragment, container, false);
+        linn=(FrameLayout)view.findViewById(R.id.linn);
+        unity_name=(TextView)view.findViewById(R.id.unity_name);
         log_date=(EditText)view.findViewById(R.id.log_date);
+        log_time=(EditText)view.findViewById(R.id.log_time);
         click=(FloatingActionButton)view.findViewById(R.id.float_btn);
         statustype=(Spinner)view.findViewById(R.id.status_id);
         camera=(RelativeLayout)view.findViewById(R.id.choose_camera);
@@ -67,7 +100,22 @@ public class LodgeIncidentFragment extends Fragment {
         log_form1=(RelativeLayout)view.findViewById(R.id.log_form1);
         log_form2=(RelativeLayout)view.findViewById(R.id.log_form2);
         myCalendar= Calendar.getInstance();
-       final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+        unity_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Intent i = new Intent(getContext(), UnitList.class);
+                i.putExtra("pagename","LogIncident");
+                startActivity(i);
+
+            }
+        });
+
+
+
+
+        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
@@ -92,10 +140,31 @@ public class LodgeIncidentFragment extends Fragment {
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH));
                 datepickerDialog.getDatePicker().setMinDate(myCalendar.getTimeInMillis());
+                log_date.setText(date.toString());
 
                 datepickerDialog.show();
 
             }
+        });
+        log_time.setOnClickListener(new View.OnClickListener() {
+
+
+            @Override
+            public void onClick(View v) {
+                Calendar mcurrentTime = Calendar.getInstance();
+                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                int minute = mcurrentTime.get(Calendar.MINUTE);
+                TimePickerDialog timePickerDialog=new TimePickerDialog(getContext(),new TimePickerDialog.OnTimeSetListener() {
+
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        log_time.setText(selectedHour + ":" + selectedMinute);
+                    }
+                },hour, minute, true);//Yes 24 hour time
+                timePickerDialog.setTitle("Select Time");
+                timePickerDialog.show();
+            }
+
         });
 
         click.setOnClickListener(new View.OnClickListener() {
@@ -112,6 +181,8 @@ public class LodgeIncidentFragment extends Fragment {
                 log_form.setVisibility(View.GONE);
                 log_form1.setVisibility(View.VISIBLE);
                 log_form2.setVisibility(View.GONE);
+
+                Checkinserver();
             }
         });
 
@@ -166,6 +237,24 @@ public class LodgeIncidentFragment extends Fragment {
 
        imagelIST();
         return view;
+    }
+
+    private void Checkinserver() {
+        if (CheckInternet.getNetworkConnectivityStatus(getContext())) {
+            Continue_log_Incident checkin = new Continue_log_Incident();
+           // String unit_id = unitid;
+           // String location = loc.getText().toString();
+           // String dateTime = date_time.toString();
+            checkin.execute(unityid);
+        } else {
+            showsnackbar("No Internet");
+        }
+    }
+
+    private void showsnackbar(String message) {
+        Snackbar snackbar = Snackbar
+                .make(linn, message, Snackbar.LENGTH_LONG);
+        snackbar.show();
     }
 
     private void updateLabel() {
@@ -266,5 +355,157 @@ public class LodgeIncidentFragment extends Fragment {
                 Toast.makeText(getActivity(), "Cancelled", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    private class Continue_log_Incident extends AsyncTask<String, Void, Void> {
+
+        private static final String TAG = "SynchMobnum";
+        private ProgressDialog progressDialog = null;
+        int server_status;
+        String id, mobile, name;
+        String server_message;
+        String user_type;
+        String photo;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            if (progressDialog == null) {
+                progressDialog = ProgressDialog.show(getContext(), "Loading", "Please wait...");
+            }
+            // onPreExecuteTask();
+        }
+
+        @Override
+        protected Void doInBackground(String... params) {
+
+            try {
+                String unitid = params[0];
+                String address = params[2];
+                String datetime = params[3];
+                String checkin_status = params[4];
+                InputStream in = null;
+                int resCode = -1;
+
+                String link = Constants.OFFLINE + Constants.CHECKIN;
+                URL url = new URL(link);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setReadTimeout(10000);
+                conn.setConnectTimeout(15000);
+                conn.setRequestMethod("POST");
+                conn.setDoInput(true);
+                conn.setDoOutput(true);
+                conn.setAllowUserInteraction(false);
+                conn.setInstanceFollowRedirects(true);
+                conn.setRequestMethod("POST");
+
+                Uri.Builder builder = new Uri.Builder()
+                        .appendQueryParameter("unit_id", unitid)
+                        .appendQueryParameter("date", address)
+                        .appendQueryParameter("time", address)
+                        .appendQueryParameter("place_of_incident", datetime)
+                        .appendQueryParameter("reported_by_id", datetime)
+                        .appendQueryParameter("status", datetime)
+                        .appendQueryParameter("intensity", datetime)
+                        .appendQueryParameter("incident_type", datetime)
+                        .appendQueryParameter("description", datetime)
+                        .appendQueryParameter("assigned_to_id", datetime)
+                        .appendQueryParameter("action_taken", datetime)
+                        .appendQueryParameter("photo", checkin_status);
+
+                //.appendQueryParameter("deviceid", deviceid);
+                String query = builder.build().getEncodedQuery();
+
+                OutputStream os = conn.getOutputStream();
+                BufferedWriter writer = new BufferedWriter(
+                        new OutputStreamWriter(os, "UTF-8"));
+                writer.write(query);
+                writer.flush();
+                writer.close();
+                os.close();
+
+                conn.connect();
+                resCode = conn.getResponseCode();
+                if (resCode == HttpURLConnection.HTTP_OK) {
+                    in = conn.getInputStream();
+                }
+                if (in == null) {
+                    return null;
+                }
+                BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
+                String response = "", data = "";
+
+                while ((data = reader.readLine()) != null) {
+                    response += data + "\n";
+                }
+
+                Log.i(TAG, "Response : " + response);
+
+                /**
+                 * {
+                 "checkin_id": null,
+                 "status": 1,
+                 "message": "Successfully Checked In."
+                 }
+                 * */
+
+
+                if (response != null && response.length() > 0) {
+                    JSONObject res = new JSONObject(response.trim());
+                    server_status = res.optInt("status");
+                    if (server_status == 1) {
+                        id = res.optString("checkin_id");
+                        server_message = res.optString("message");
+
+                    } else {
+                        server_message = "Invalid Credentials";
+                    }
+                }
+
+                return null;
+
+            } catch (SocketTimeoutException exception) {
+                server_message = "Network Error";
+                Log.e(TAG, "SynchMobnum : doInBackground", exception);
+            } catch (ConnectException exception) {
+                server_message = "Network Error";
+                Log.e(TAG, "SynchMobnum : doInBackground", exception);
+            } catch (MalformedURLException exception) {
+                server_message = "Network Error";
+                Log.e(TAG, "SynchMobnum : doInBackground", exception);
+            } catch (IOException exception) {
+                server_message = "Network Error";
+                Log.e(TAG, "SynchMobnum : doInBackground", exception);
+            } catch (Exception exception) {
+                server_message = "Network Error";
+                Log.e(TAG, "SynchMobnum : doInBackground", exception);
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void user) {
+            super.onPostExecute(user);
+
+            if (server_status == 1) {
+                showsnackbar("Successfully Checked In.");
+
+                SharedPreferences sharedPreferences = getContext().getSharedPreferences(Constants.SHAREDPREFERENCE_KEY, 0); // 0 - for private mode
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString(Constants.CHECKIN_ID, id);
+                editor.commit();
+
+
+                Intent intent = new Intent(getContext(), MainActivity.class);
+                intent.putExtra("checkinid",id);
+                startActivity(intent);
+
+            }
+            else {
+                showsnackbar(server_message);
+            }
+        }
+
     }
 }

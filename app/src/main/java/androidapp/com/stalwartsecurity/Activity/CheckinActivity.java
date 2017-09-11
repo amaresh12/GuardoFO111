@@ -65,7 +65,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import androidapp.com.stalwartsecurity.Adapter.UnitListAdapter;
 import androidapp.com.stalwartsecurity.R;
 import androidapp.com.stalwartsecurity.Util.CheckInternet;
 import androidapp.com.stalwartsecurity.Util.Constants;
@@ -78,7 +77,7 @@ import androidapp.com.stalwartsecurity.Util.Constants;
 public class CheckinActivity extends AppCompatActivity implements LocationListener,GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
 
-    TextView name, dateTime, unit, unit1;
+    public static TextView name, dateTime, unit, unit1;
     TextView loc, fo_name;
     Button btn_continue;
     private LocationManager lom;
@@ -90,8 +89,8 @@ public class CheckinActivity extends AppCompatActivity implements LocationListen
     private final static int REQUEST_CHECK_SETTINGS_GPS = 0x1;
     private final static int REQUEST_ID_MULTIPLE_PERMISSIONS = 0x2;
     Spinner visit;
-    String unityName = null;
-    String unitid;
+    public static String unityName;
+    public static String unitid;
     Geocoder geocode;
     String foname, photo, date_time;
     ImageView image;
@@ -152,20 +151,22 @@ public class CheckinActivity extends AppCompatActivity implements LocationListen
         });
 
 
-        unityName = UnitListAdapter.unityName;
-        unitid = UnitListAdapter.unityid;
+        //unityName = UnitListAdapter.unityName;
+       // unitid = UnitListAdapter.unityid;
         SharedPreferences sharedPreferences = CheckinActivity.this.getSharedPreferences(Constants.SHAREDPREFERENCE_KEY, 0); // 0 - for private mode
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(Constants.N_UNIT_ID, unitid);
         editor.commit();
 
-        unit.setText(unityName);
         unit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent i = new Intent(CheckinActivity.this, UnitList.class);
+                i.putExtra("pagename","checkinactivity");
                 startActivity(i);
+                //unit.setText(unityName);
+
             }
         });
 

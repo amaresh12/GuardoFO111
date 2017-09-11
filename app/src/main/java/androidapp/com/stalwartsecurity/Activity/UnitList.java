@@ -1,6 +1,7 @@
 package androidapp.com.stalwartsecurity.Activity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -49,6 +50,7 @@ public class UnitList extends AppCompatActivity {
     UnityDetailsLocation unityDetailsLoc;
     ArrayList<UnityDetailsLocation> unityDetailsLoc1;
     public static String Locationid;
+    String data;
 
 
 
@@ -59,6 +61,12 @@ public class UnitList extends AppCompatActivity {
 
         relative_snackbar=(RelativeLayout)findViewById(R.id.relative);
         unit_list=(ListView)findViewById(R.id.unit_list);
+
+        Intent intent=getIntent();
+        Bundle extras = intent.getExtras();
+        if(extras != null) {
+             data = extras.getString("pagename");
+        }
 
         Unitylist();
 
@@ -205,8 +213,14 @@ public class UnitList extends AppCompatActivity {
         protected void onPostExecute(Void user) {
             super.onPostExecute(user);
             if(server_status==1) {
-                adapter=new UnitListAdapter(UnitList.this,unityDetailsLoc1);
-                unit_list.setAdapter(adapter);
+                if(data.contentEquals("LogIncident")) {
+                    adapter = new UnitListAdapter(UnitList.this, unityDetailsLoc1,data);
+                    unit_list.setAdapter(adapter);
+                }
+                else{
+                    adapter = new UnitListAdapter(UnitList.this, unityDetailsLoc1,data);
+                    unit_list.setAdapter(adapter);
+                }
             }
             else{
                 Snackbar snackbar = Snackbar

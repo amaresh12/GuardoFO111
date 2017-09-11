@@ -36,5 +36,7 @@ public class Constants {
     public static String CHECKIN_CHECKIN_TYPE_ID="c_checkin_type_id";
     public static String TRAINING_CHECKIN_TYPE_ID="t_checkin_type_id";
     public static String N_CHECKIN_CHECKIN_TYPE_ID="n_checkin_type_id";
+    public static String UNITY_ID="incident_unit_id";
+    public static String UNITY_NAME="incident_unit_name";
     //http://applicationworld.net/stallwart/WebServices/primaryNotificationList
 }

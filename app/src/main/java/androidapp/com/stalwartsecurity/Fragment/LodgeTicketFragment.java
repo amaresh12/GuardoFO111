@@ -21,6 +21,7 @@ public class LodgeTicketFragment extends Fragment {
     RatingBar ratingBar;
     TextView txtRatingValue;
     Spinner statustype,spin_department;
+    TextView unitname;
 
 
 

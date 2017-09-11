@@ -2,12 +2,10 @@ package androidapp.com.stalwartsecurity.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +13,7 @@ import java.util.ArrayList;
 
 import androidapp.com.stalwartsecurity.Activity.CheckinActivity;
 import androidapp.com.stalwartsecurity.Activity.UnitList;
+import androidapp.com.stalwartsecurity.Fragment.LodgeIncidentFragment;
 import androidapp.com.stalwartsecurity.Pojo.UnityDetailsLocation;
 import androidapp.com.stalwartsecurity.R;
 
@@ -28,14 +27,16 @@ public class UnitListAdapter extends BaseAdapter {
     Context context;
     ArrayList<UnityDetailsLocation> array;
     public static String unityName,unityid;
-    public static EditText demo_unity;
+    public static String demo_unity,demo_unitid;
+    private String page;
 
 
 
 
-    public UnitListAdapter(UnitList unitList, ArrayList<UnityDetailsLocation> array1) {
+    public UnitListAdapter(UnitList unitList, ArrayList<UnityDetailsLocation> array1, String pagename) {
         this.context=unitList;
         this.array=array1;
+        page=pagename;
     }
 
     @Override
@@ -85,14 +86,22 @@ public class UnitListAdapter extends BaseAdapter {
             public void onClick(View view) {
 
                 String id=unity_pos.getLocation_id();
-                unityName=unity_pos.getLocation_name();
-                unityid=unity_pos.getLocation_id();
+                if(page.contentEquals("LogIncident")) {
+                    LodgeIncidentFragment.unity_name.setText(unity_pos.getLocation_name());
+                    LodgeIncidentFragment.unityid = unity_pos.getLocation_id();
+                }
+                else {
+                    CheckinActivity.unit.setText(unity_pos.getLocation_name());
+                    CheckinActivity.unitid = unity_pos.getLocation_id();
+                }
 
-                Intent intent=new Intent(view.getContext(), CheckinActivity.class);
+                ((Activity)context).finish();// finish the adapter
+
+               /* Intent intent=new Intent(view.getContext(), CheckinActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                context.startActivity(intent);
+                context.startActivity(intent);*/
 
             }
         });
