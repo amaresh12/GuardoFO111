@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
@@ -44,13 +45,17 @@ import androidapp.com.stalwartsecurity.Util.Constants;
 
 public class TrainingActivity extends AppCompatActivity {
 
-    EditText alrt_cmnt, vaca_cmnt, grv_cmnt, clnt_cmnt, sum_cmnt, incdnt_cmnt, jb_comnt;
+
     ImageView photo;
     Button submit;
     RatingBar alrt_rtng, vac_rtng, grv_rtng, clnt_rtng, incdnt_rtng, jb_rating;
     String alrt_rating_value, vac_rating_value, grv_rating_value, clnt_rating_value, incdnt_rating_value, jb_rating_value;
     RelativeLayout linn;
     String user_id, checkin_id, date_time;
+    ImageButton bt_alertplus,bt_alertminus,bt_jbmin,bt_jbmax,
+            bt_satisfymin,bt_satisfyplus,bt_issuemin,bt_issuemax;
+    EditText et_alertrating,et_jb_knldg,et_satisfy,et_issue,et_commentalert,
+            et_comment_staisfy,et_comment_issue,et_jb_rating;
 
 
     @Override
@@ -68,68 +73,186 @@ public class TrainingActivity extends AppCompatActivity {
         date_time = dateFormatter.format(today);
         linn = (RelativeLayout) findViewById(R.id.linn);
 
-        alrt_cmnt = (EditText) findViewById(R.id.alrt_trnot_cmnt);
-        vaca_cmnt = (EditText) findViewById(R.id.vaca_cmnt);
-        grv_cmnt = (EditText) findViewById(R.id.gra_cmnt);
-        clnt_cmnt = (EditText) findViewById(R.id.client_cmnt);
-        incdnt_cmnt = (EditText) findViewById(R.id.incdnt_cmnt);
-        sum_cmnt = (EditText) findViewById(R.id.smry_cmnt);
-        jb_comnt = (EditText) findViewById(R.id.job_knldg_cmnt);
+        bt_alertminus=(ImageButton)findViewById(R.id.imgbt_alertmin);
+        bt_alertplus=(ImageButton)findViewById(R.id.imgbt_alertplus);
+        et_alertrating=(EditText)findViewById(R.id.et_alert);
+        bt_satisfymin=(ImageButton)findViewById(R.id.imgbt_staisfymin);
+        bt_satisfyplus=(ImageButton)findViewById(R.id.imgbt_staisfyplus);
+        et_satisfy=(EditText)findViewById(R.id.et_satisfy);
+        bt_issuemin=(ImageButton)findViewById(R.id.imgbt_issuemin);
+        bt_issuemax=(ImageButton)findViewById(R.id.imgbt_issueplus);
+        et_issue=(EditText)findViewById(R.id.et_issue);
+        et_commentalert=(EditText)findViewById(R.id.et_comment_alert);
+        et_comment_staisfy=(EditText)findViewById(R.id.et_comment_satis);
+        et_comment_issue=(EditText)findViewById(R.id.et_comment_issue);
+        bt_jbmin=(ImageButton)findViewById(R.id.imgbt_jobminus);
+        bt_jbmax=(ImageButton)findViewById(R.id.imgbt_jbplus);
+        et_jb_knldg=(EditText)findViewById(R.id.et_comment_jb);
+        et_jb_rating=(EditText)findViewById(R.id.et_jb);
 
-        alrt_rtng = (RatingBar) findViewById(R.id.alrt_trnot_rating);
-        vac_rtng = (RatingBar) findViewById(R.id.vaca_rating);
-        grv_rtng = (RatingBar) findViewById(R.id.gra_rating);
-        clnt_rtng = (RatingBar) findViewById(R.id.client_rating);
-        incdnt_rtng = (RatingBar) findViewById(R.id.incdnt_rating);
-        jb_rating = (RatingBar) findViewById(R.id.jb_knldg_rating);
 
-        photo = (ImageView) findViewById(R.id.unit_img);
+
+        linn=(RelativeLayout)findViewById(R.id.linn);
+
+        photo=(ImageView)findViewById(R.id.training_img);
+
         submit = (Button) findViewById(R.id.trng_submit);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validatefields();
+                CheckinServer();
             }
         });
-        alrt_rtng.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+        bt_alertminus.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                alrt_rating_value = String.valueOf(rating);
+            public void onClick(View view) {
+                updateEditTextlow("alert");
             }
         });
-        vac_rtng.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+        bt_alertplus.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                vac_rating_value = String.valueOf(rating);
-            }
-        });
-        grv_rtng.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                grv_rating_value = String.valueOf(rating);
-            }
-        });
-        clnt_rtng.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                clnt_rating_value = String.valueOf(rating);
-            }
-        });
-        incdnt_rtng.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                incdnt_rating_value = String.valueOf(rating);
-            }
-        });
-        jb_rating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                jb_rating_value = String.valueOf(rating);
+            public void onClick(View view) {
+                updateEditTexthigh("alert");
             }
         });
 
 
+
+        bt_satisfyplus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateEditTexthigh("satisfy");
+            }
+        });
+        bt_satisfymin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateEditTextlow("satisfy");
+            }
+        });
+        bt_issuemin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateEditTextlow("issue");
+            }
+        });
+        bt_issuemax.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateEditTexthigh("issue");
+            }
+        });
+        bt_jbmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateEditTextlow("job");
+            }
+        });
+        bt_jbmax.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateEditTexthigh("job");
+            }
+        });
+
+
+    }
+
+
+    private void updateEditTexthigh(String message) {
+        if(message.contains("alert")){
+            String alertRatings=et_alertrating.getText().toString().trim();
+            if(alertRatings.contains("Poor")){
+                et_alertrating.setText("Average");
+            }
+            else if(alertRatings.contains("Average")){
+                et_alertrating.setText("Good");
+            }
+            else{
+                showsnackbar("This is the maximum rating");
+            }
+        }
+
+        else if(message.contains("satisfy")){
+            String alertRatings=et_satisfy.getText().toString().trim();
+            if(alertRatings.contains("Poor")){
+                et_satisfy.setText("Average");
+            }
+            else if(alertRatings.contains("Average")){
+                et_satisfy.setText("Good");
+            }
+
+            else{
+                showsnackbar("This is the maximum rating");
+            }
+        }
+        else if(message.contains("issue")){
+            String alertRatings=et_issue.getText().toString().trim();
+            if(alertRatings.contains("Poor")){
+                et_issue.setText("Average");
+            }
+            else if(alertRatings.contains("Average")){
+                et_issue.setText("Good");
+            }
+
+            else{
+                showsnackbar("This is the maximum rating");
+            }
+        }
+        else if(message.contains("job")){
+            String alertRatings=et_jb_knldg.getText().toString().trim();
+            if(alertRatings.contains("Poor")){
+                et_jb_knldg.setText("Average");
+            }
+            else if(alertRatings.contains("Average")){
+                et_jb_knldg.setText("Good");
+            }
+
+            else{
+                showsnackbar("This is the maximum rating");
+            }
+        }
+    }
+    private void updateEditTextlow(String message) {
+        if (message.contains("alert")) {
+            String alertRatings = et_alertrating.getText().toString().trim();
+            if (alertRatings.contains("Good")) {
+                et_alertrating.setText("Average");
+            } else if (alertRatings.contains("Average")) {
+                et_alertrating.setText("Poor");
+            } else {
+                showsnackbar("This is the minimum rating");
+            }
+        } else if (message.contains("satisfy")) {
+            String alertRatings = et_satisfy.getText().toString().trim();
+            if (alertRatings.contains("Good")) {
+                et_satisfy.setText("Average");
+            } else if (alertRatings.contains("Average")) {
+                et_satisfy.setText("Poor");
+            } else {
+                showsnackbar("This is the minimum rating");
+            }
+        } else if (message.contains("issue")) {
+            String alertRatings = et_issue.getText().toString().trim();
+            if (alertRatings.contains("Good")) {
+                et_issue.setText("Average");
+            } else if (alertRatings.contains("Average")) {
+                et_issue.setText("Poor");
+            } else {
+                showsnackbar("This is the minimum rating");
+            }
+        }
+        else if (message.contains("job")) {
+            String alertRatings = et_jb_rating.getText().toString().trim();
+            if (alertRatings.contains("Good")) {
+                et_jb_rating.setText("Average");
+            } else if (alertRatings.contains("Average")) {
+                et_jb_rating.setText("Poor");
+            } else {
+                showsnackbar("This is the minimum rating");
+            }
+        }
     }
 
     private void showsnackbar(String message) {
@@ -138,82 +261,24 @@ public class TrainingActivity extends AppCompatActivity {
         snackbar.show();
     }
 
-    private void validatefields() {
-
-        String alertcomnt = alrt_cmnt.getText().toString();
-        String vacaCmnt = vaca_cmnt.getText().toString();
-        String grvCmnt = grv_cmnt.getText().toString();
-        String clntCmnt = clnt_cmnt.getText().toString();
-        String incdntCmnt = incdnt_cmnt.getText().toString();
-        String sumCmnt = sum_cmnt.getText().toString();
-        String jbkn_cmnt = jb_comnt.getText().toString();
-
-        String alert_rating = alrt_rating_value;
-        String vac_rating = vac_rating_value;
-        String grv_rating = grv_rating_value;
-        String client_rating = clnt_rating_value;
-        String incdnt_rating = incdnt_rating_value;
-        String jbkn_rating = jb_rating_value;
-
-
-        if (alertcomnt.contentEquals("")) {
-            showsnackbar("Give Comments");
-
-        } else if (vacaCmnt.contentEquals("")) {
-            showsnackbar("Give Comments");
-        } else if (grvCmnt.contentEquals("")) {
-            showsnackbar("Give Comments");
-        } else if (vacaCmnt.contentEquals("")) {
-            showsnackbar("Give Comments");
-        } else if (clntCmnt.contentEquals("")) {
-            showsnackbar("Give Comments");
-        } else if (incdntCmnt.contentEquals("")) {
-            showsnackbar("Give Comments");
-        } else if (sumCmnt.contentEquals("")) {
-            showsnackbar("Give Comments");
-        } else if (jbkn_cmnt.contentEquals("")) {
-            showsnackbar("Give Comments");
-        } else if (alert_rating.contentEquals("")) {
-            showsnackbar("Give Ratings");
-        } else if (vac_rating.contentEquals("")) {
-            showsnackbar("Give Ratings");
-        } else if (grv_rating.contentEquals("")) {
-            showsnackbar("Give Ratings");
-        } else if (incdnt_rating.contentEquals("")) {
-            showsnackbar("Give Ratings");
-        } else if (client_rating.contentEquals("")) {
-            showsnackbar("Give Ratings");
-        } else if (jbkn_rating.contentEquals("")) {
-            showsnackbar("Give Ratings");
-        } else {
-            CheckinServer();
-        }
-
-
-    }
 
     private void CheckinServer() {
 
         if (CheckInternet.getNetworkConnectivityStatus(this)) {
             Training_asyn checkin = new Training_asyn();
             String checkin_type = "2";
-            String alertcomnt = alrt_cmnt.getText().toString();
-            String vacaCmnt = vaca_cmnt.getText().toString();
-            String grvCmnt = grv_cmnt.getText().toString();
-            String clntCmnt = clnt_cmnt.getText().toString();
-            String incdntCmnt = incdnt_cmnt.getText().toString();
-            String sumCmnt = sum_cmnt.getText().toString();
-            String jb_kn_comnt = jb_comnt.getText().toString();
+            String alertcomnt = et_commentalert.getText().toString();
+            String clntCmnt = et_comment_staisfy.getText().toString();
+            String incdntCmnt = et_comment_issue.getText().toString();
+            String jbCmnt = et_jb_knldg.getText().toString();
 
-            String alert_rating = alrt_rating_value;
-            String vac_rating = vac_rating_value;
-            String grv_rating = grv_rating_value;
-            String client_rating = clnt_rating_value;
-            String incdnt_rating = incdnt_rating_value;
-            String jb_kn_rating = jb_rating_value;
-            String photo = "";
-            checkin.execute(checkin_id, checkin_type, alertcomnt, alert_rating, vacaCmnt, vac_rating, grvCmnt,
-                    grv_rating, clntCmnt, client_rating, incdntCmnt, incdnt_rating, sumCmnt, jb_kn_rating, jb_kn_comnt, photo, date_time);
+            String alert_rating = et_alertrating.getText().toString();
+            String client_rating = et_satisfy.getText().toString();
+            String incdnt_rating = et_issue.getText().toString();
+            String job_rating = et_jb_rating.getText().toString();
+            String photo="";
+            checkin.execute(checkin_id, checkin_type, alertcomnt, alert_rating,
+                    clntCmnt, client_rating, incdntCmnt, incdnt_rating,jbCmnt,job_rating,photo, date_time);
         } else {
             showsnackbar("No Internet");
         }
@@ -247,19 +312,14 @@ public class TrainingActivity extends AppCompatActivity {
                 String checkin_type = params[1];
                 String alertness_comments = params[2];
                 String alertness_ratings = params[3];
-                String vacancies_comments = params[4];
-                String vacancies_ratings = params[5];
-                String gra_comments = params[6];
-                String gra_ratings = params[7];
-                String client_comments = params[8];
-                String client_ratings = params[9];
-                String incident_comments = params[10];
-                String incident_ratings = params[11];
-                String summary = params[12];
-                String photo = params[13];
-                String jb_kno_cmnt = params[14];
-                String jb_kn_rtng = params[15];
-                String date_time = params[16];
+                String client_comments = params[4];
+                String client_ratings = params[5];
+                String incident_comments = params[6];
+                String incident_ratings = params[7];
+                String jb_cdnt = params[8];
+                String jb_rating = params[9];
+                String photo = params[10];
+                String date_time = params[11];
                 InputStream in = null;
                 int resCode = -1;
 
@@ -280,18 +340,13 @@ public class TrainingActivity extends AppCompatActivity {
                         .appendQueryParameter("checkin_type", checkin_type)
                         .appendQueryParameter("alertness_comments", alertness_comments)
                         .appendQueryParameter("alertness_ratings", alertness_ratings)
-                        .appendQueryParameter("vacancies_comments", vacancies_comments)
-                        .appendQueryParameter("vacancies_ratings", vacancies_ratings)
-                        .appendQueryParameter("grievance_comments", gra_comments)
-                        .appendQueryParameter("grievance_ratings", gra_ratings)
                         .appendQueryParameter("client_comments", client_comments)
                         .appendQueryParameter("client_ratings", client_ratings)
                         .appendQueryParameter("incident_comments", incident_comments)
                         .appendQueryParameter("incident_ratings", incident_ratings)
-                        .appendQueryParameter("summary", summary)
                         .appendQueryParameter("photo", photo)
-                        .appendQueryParameter("jobknowledge_comments", jb_kno_cmnt)
-                        .appendQueryParameter("jobknowledge_ratings", jb_kn_rtng)
+                        .appendQueryParameter("jobknowledge_ratings", jb_rating)
+                        .appendQueryParameter("jobknowledge_comments", jb_cdnt)
                         .appendQueryParameter("date_time", date_time);
 
                 //.appendQueryParameter("deviceid", deviceid);
@@ -361,7 +416,7 @@ public class TrainingActivity extends AppCompatActivity {
                 Log.e(TAG, "SynchMobnum : doInBackground", exception);
             } catch (Exception exception) {
                 server_message = "Network Error";
-                Log.e(TAG, "SynchMobnum : doInBackground", exception);
+                Log.e( "SynchMobnum : doInBackground", exception.toString());
             }
 
             return null;

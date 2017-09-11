@@ -46,7 +46,7 @@ public class CustomerFeddbackActivity extends AppCompatActivity {
         signature=(RelativeLayout)findViewById(R.id.signatore_form);
         fdbck_next=(Button)findViewById(R.id.fdbck_next);
         rsn_next=(Button)findViewById(R.id.reason_next);
-        signa_submit=(Button)findViewById(R.id.submit_signator);
+        signa_submit=(Button)findViewById(R.id.save_button);
         clear=(Button)findViewById(R.id.clear);
         linn=(RelativeLayout)findViewById(R.id.fedbck);
         addListenerOnRatingBar();

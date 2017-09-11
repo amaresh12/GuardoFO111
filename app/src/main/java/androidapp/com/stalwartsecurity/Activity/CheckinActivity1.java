@@ -23,7 +23,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RatingBar;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -58,11 +58,9 @@ import androidapp.com.stalwartsecurity.Util.Constants;
  */
 
 public class CheckinActivity1 extends AppCompatActivity {
-    EditText alrt_cmnt,vaca_cmnt,grv_cmnt,clnt_cmnt,sum_cmnt,incdnt_cmnt;
+
     ImageView photo;
     Button submit;
-    RatingBar alrt_rtng,vac_rtng,grv_rtng,clnt_rtng,incdnt_rtng;
-    String alrt_rating_value,vac_rating_value,grv_rating_value,clnt_rating_value,incdnt_rating_value;
     RelativeLayout linn;
     String user_id,checkin_id,date_time;
     ImageButton bt_alertplus,bt_alertminus,bt_vacancymin,bt_vacancyplus,bt_grivplus,bt_griv_min,
@@ -73,6 +71,8 @@ public class CheckinActivity1 extends AppCompatActivity {
     private static String[] PERMISSIONS_STORAGE = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
     SignaturePad signaturePad;
     Button clearpad, savesignatory;
+    LinearLayout layout_checkin,layout_signatory;
+    String  signature;
 
 
 
@@ -113,12 +113,16 @@ public class CheckinActivity1 extends AppCompatActivity {
 
         photo=(ImageView)findViewById(R.id.unit_img);
         submit=(Button)findViewById(R.id.chkin_submit);
+        layout_checkin=(LinearLayout)findViewById(R.id.layout_checkin);
+        layout_signatory=(LinearLayout)findViewById(R.id.layout_signator);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+           layout_checkin.setVisibility(View.GONE);
+                layout_signatory.setVisibility(View.VISIBLE);
                 //validatefields();
-                CheckinServer();
+                //CheckinServer();
             }
         });
         bt_alertminus.setOnClickListener(new View.OnClickListener() {
@@ -133,46 +137,19 @@ public class CheckinActivity1 extends AppCompatActivity {
                 updateEditTexthigh("alert");
             }
         });
-        bt_vacancymin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                updateEditTextlow("vacancy");
-            }
-        });
-        bt_vacancyplus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                updateEditTexthigh("vacancy");
-            }
-        });
-        bt_grivplus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                updateEditTexthigh("griv");
-            }
-        });
-        bt_alertminus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                updateEditTextlow("griv");
-            }
-        });
+
+
+
         bt_satisfyplus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 updateEditTexthigh("satisfy");
             }
         });
-        bt_alertminus.setOnClickListener(new View.OnClickListener() {
+        bt_satisfymin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 updateEditTextlow("satisfy");
-            }
-        });
-        bt_issuemax.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                updateEditTexthigh("issue");
             }
         });
         bt_issuemin.setOnClickListener(new View.OnClickListener() {
@@ -181,6 +158,13 @@ public class CheckinActivity1 extends AppCompatActivity {
                 updateEditTextlow("issue");
             }
         });
+        bt_issuemax.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateEditTexthigh("issue");
+            }
+        });
+
 
        /*
        * For Signature...
@@ -189,9 +173,9 @@ public class CheckinActivity1 extends AppCompatActivity {
 
 
 
-        clearpad = (Button) findViewById(R.id.clear_button);
+        clearpad = (Button) findViewById(R.id.clear);
         savesignatory = (Button) findViewById(R.id.save_button);
-        signaturePad = (SignaturePad) findViewById(R.id.signator);
+        signaturePad = (SignaturePad) findViewById(R.id.signatory);
         signaturePad.setOnSignedListener(new SignaturePad.OnSignedListener() {
             @Override
             public void onStartSigning() {
@@ -226,7 +210,10 @@ public class CheckinActivity1 extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Bitmap signatureBitmap = signaturePad.getSignatureBitmap();
-                if (addJpgSignatureToGallery(signatureBitmap)) {
+                addJpgSignatureToGallery(signatureBitmap);
+               // addSvgSignatureToGallery(signaturePad.getSignatureSvg());
+                CheckinServer();
+                /*if (addJpgSignatureToGallery(signatureBitmap)) {
                     Toast.makeText(CheckinActivity1.this, "Signature saved into the Gallery", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(CheckinActivity1.this, "Unable to store the signature", Toast.LENGTH_SHORT).show();
@@ -235,7 +222,7 @@ public class CheckinActivity1 extends AppCompatActivity {
                     Toast.makeText(CheckinActivity1.this, "SVG Signature saved into the Gallery", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(CheckinActivity1.this, "Unable to store the SVG signature", Toast.LENGTH_SHORT).show();
-                }
+                }*/
             }
         });
     }
@@ -291,7 +278,10 @@ public class CheckinActivity1 extends AppCompatActivity {
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
         Uri contentUri = Uri.fromFile(photo);
         mediaScanIntent.setData(contentUri);
+         signature= String.valueOf(photo);
+        //String photo11= String.valueOf(mediaScanIntent);
         CheckinActivity1.this.sendBroadcast(mediaScanIntent);
+
     }
 
     public boolean addSvgSignatureToGallery(String signatureSvg) {
@@ -332,8 +322,6 @@ public class CheckinActivity1 extends AppCompatActivity {
         }
     }
 
-
-}
 
     private void showsnackbar(String message) {
         Snackbar snackbar = Snackbar
@@ -397,34 +385,31 @@ public class CheckinActivity1 extends AppCompatActivity {
                 et_satisfy.setText("Average");
             } else if (alertRatings.contains("Average")) {
                 et_satisfy.setText("Poor");
-            }else {
+            } else {
                 showsnackbar("This is the minimum rating");
             }
-        }
-        else if(message.contains("issue")){
-            String alertRatings=et_issue.getText().toString().trim();
-            if(alertRatings.contains("Good")){
+        } else if (message.contains("issue")) {
+            String alertRatings = et_issue.getText().toString().trim();
+            if (alertRatings.contains("Good")) {
                 et_issue.setText("Average");
-            }
-            else if(alertRatings.contains("Average")){
+            } else if (alertRatings.contains("Average")) {
                 et_issue.setText("Poor");
-            }
-
-            else{
+            } else {
                 showsnackbar("This is the minimum rating");
             }
         }
     }
 
+
     private void validatefields() {
 
-        String alertcomnt=et_commentalert.getText().toString();
-        String clntCmnt=et_comment_staisfy.getText().toString();
-        String incdntCmnt=et_comment_issue.getText().toString();
+        String alertcomnt = et_commentalert.getText().toString();
+        String clntCmnt = et_comment_staisfy.getText().toString();
+        String incdntCmnt = et_comment_issue.getText().toString();
 
-        String alert_rating=et_alertrating.getText().toString();
-        String client_rating=et_satisfy.getText().toString();
-        String incdnt_rating=et_issue.getText().toString();
+        String alert_rating = et_alertrating.getText().toString();
+        String client_rating = et_satisfy.getText().toString();
+        String incdnt_rating = et_issue.getText().toString();
 
     }
 
@@ -432,21 +417,19 @@ public class CheckinActivity1 extends AppCompatActivity {
 
         if (CheckInternet.getNetworkConnectivityStatus(this)) {
             Checkin_asyn checkin = new Checkin_asyn();
-            String checkin_type="1";
-            String alertcomnt=et_commentalert.getText().toString();
-            String clntCmnt=et_comment_staisfy.getText().toString();
-            String incdntCmnt=et_comment_issue.getText().toString();
+            String checkin_type = "1";
+            String alertcomnt = et_commentalert.getText().toString();
+            String clntCmnt = et_comment_staisfy.getText().toString();
+            String incdntCmnt = et_comment_issue.getText().toString();
 
-            String alert_rating=et_alertrating.getText().toString();
-            String client_rating=et_satisfy.getText().toString();
-            String incdnt_rating=et_issue.getText().toString();
-            String photo="";
-            checkin.execute(checkin_id,checkin_type,alertcomnt,alert_rating,
-                    clntCmnt,client_rating,incdntCmnt,incdnt_rating,photo,date_time);
+            String alert_rating = et_alertrating.getText().toString();
+            String client_rating = et_satisfy.getText().toString();
+            String incdnt_rating = et_issue.getText().toString();
+            checkin.execute(checkin_id, checkin_type, alertcomnt, alert_rating,
+                    clntCmnt, client_rating, incdntCmnt, incdnt_rating, signature, date_time);
         } else {
             showsnackbar("No Internet");
         }
-
     }
 
     private class Checkin_asyn extends AsyncTask<String, Void, Void> {
@@ -564,19 +547,19 @@ public class CheckinActivity1 extends AppCompatActivity {
 
             } catch (SocketTimeoutException exception) {
                 server_message = "Network Error";
-                Log.e(TAG, "SynchMobnum : doInBackground", exception);
+                Log.e( "SynchMobnum : doInBackground", exception.toString());
             } catch (ConnectException exception) {
                 server_message = "Network Error";
-                Log.e(TAG, "SynchMobnum : doInBackground", exception);
+                Log.e("SynchMobnum : doInBackground", exception.toString());
             } catch (MalformedURLException exception) {
                 server_message = "Network Error";
-                Log.e(TAG, "SynchMobnum : doInBackground", exception);
+                Log.e( "SynchMobnum : doInBackground", exception.toString());
             } catch (IOException exception) {
                 server_message = "Network Error";
-                Log.e(TAG, "SynchMobnum : doInBackground", exception);
+                Log.e( "SynchMobnum : doInBackground", exception.toString());
             } catch (Exception exception) {
                 server_message = "Network Error";
-                Log.e(TAG, "SynchMobnum : doInBackground", exception);
+                Log.e( "SynchMobnum : doInBackground", exception.toString());
             }
 
             return null;
@@ -592,7 +575,7 @@ public class CheckinActivity1 extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString(Constants.CHECKIN_CHECKIN_TYPE_ID, id);
                 editor.commit();
-                Intent i=new Intent(CheckinActivity1.this,CheckinActivity.class);
+                Intent i = new Intent(CheckinActivity1.this, CheckinActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
@@ -603,12 +586,13 @@ public class CheckinActivity1 extends AppCompatActivity {
                 showsnackbar(server_message);
             }
         }
-
     }
+
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent i=new Intent(CheckinActivity1.this,CheckinActivity.class);
+        Intent i = new Intent(CheckinActivity1.this, CheckinActivity.class);
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
@@ -616,4 +600,4 @@ public class CheckinActivity1 extends AppCompatActivity {
         finish();
     }
 
-    }
+}

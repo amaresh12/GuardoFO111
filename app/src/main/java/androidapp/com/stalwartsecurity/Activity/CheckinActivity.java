@@ -154,7 +154,7 @@ public class CheckinActivity extends AppCompatActivity implements LocationListen
 
         unityName = UnitListAdapter.unityName;
         unitid = UnitListAdapter.unityid;
-        SharedPreferences sharedPreferences = CheckinActivity.this.getSharedPreferences(Constants.SHAREDPREFERENCE_KEY, 2); // 0 - for private mode
+        SharedPreferences sharedPreferences = CheckinActivity.this.getSharedPreferences(Constants.SHAREDPREFERENCE_KEY, 0); // 0 - for private mode
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(Constants.N_UNIT_ID, unitid);
         editor.commit();

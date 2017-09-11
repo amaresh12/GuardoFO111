@@ -23,6 +23,7 @@ public class LodgeTicketFragment extends Fragment {
     Spinner statustype,spin_department;
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 

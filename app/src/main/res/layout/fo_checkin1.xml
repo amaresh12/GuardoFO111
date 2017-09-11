@@ -11,16 +11,27 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+          <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_margin="20dp"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:weightSum="1"
+              android:id="@+id/layout_signator"
+              android:visibility="gone">
+            <include android:id="@+id/signatore_form"
+                layout="@layout/signator"></include>
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_margin="20dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:weightSum="1">
-
-            <include android:id="@+id/signatore_form"
-                layout="@layout/signator"
-                android:visibility="gone"></include>
-
-
+            android:weightSum="1"
+            android:id="@+id/layout_checkin">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -67,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text=" 4. Client Satisfaction"/>
+                android:text=" 2. Client Satisfaction"/>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
@@ -106,7 +117,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text=" 5. Incident / Issues"/>
+                android:text=" 3. Incident / Issues"/>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
@@ -122,7 +133,7 @@
                     />
                 <EditText
                     android:layout_width="150dp"
-                    android:text="More"
+                    android:text="Good"
                     android:gravity="center"
                     android:focusable="false"
                     android:id="@+id/et_issue"
@@ -143,15 +154,16 @@
                 android:hint="Comments"/>
 
             <Button
-                android:id="@+id/next"
+                android:id="@+id/chkin_submit"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:layout_marginBottom="30dp"
                 android:layout_marginTop="20dp"
                 android:background="@color/commentcolour"
-                android:text="submit"
+                android:text="NEXT"
                 android:textColor="@color/white"
                 android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
         </LinearLayout>
     </ScrollView>
     <ScrollView
@@ -288,13 +300,7 @@
                 android:layout_toRightOf="@+id/summary"
                 android:layout_below="@+id/summary"
                 android:background="@drawable/customedittext"/>
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/chkin_submit"
-                android:text="Submit"
-                android:layout_below="@+id/smry_cmnt"
-                android:layout_centerHorizontal="true"/>
+
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>
